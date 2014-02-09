@@ -1,4 +1,4 @@
-package com.library.config;
+package com.library.test.config;
 
 public class Constant {
 	private static final String DOMAIN = "http://localhost:";

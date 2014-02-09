@@ -18,7 +18,7 @@ public class TC6 {
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		
 	}
 
 }

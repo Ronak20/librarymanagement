@@ -118,7 +118,9 @@
 		<servlet-class>com.library.servlet.UserPanelServlet</servlet-class>
 	</servlet>
 
-
+	<listener>
+		<listener-class>com.library.job.TomcatQuartzInitializerListener</listener-class>
+	</listener>
 
 	<servlet-mapping>
 		<servlet-name>UserServlet</servlet-name>
@@ -186,9 +188,5 @@
 	<welcome-file-list>
 		<welcome-file>jsp/login.jsp</welcome-file>
 	</welcome-file-list>
-
-	<listener>
-		<listener-class>com.library.job.TomcatQuartzInitializerListener</listener-class>
-	</listener>
 
 </web-app>

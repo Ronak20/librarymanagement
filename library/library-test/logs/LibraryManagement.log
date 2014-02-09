@@ -1,0 +1,396 @@
+2014-02-09 01:32:30 INFO  TC1:33 - Entered setUp for CreateUserTest
+2014-02-09 01:32:31 INFO  TC10:51 - Entered setUp
+2014-02-09 01:32:31 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2014-02-09 01:32:31 INFO  Version:54 - HHH000412: Hibernate Core {4.3.0.Final}
+2014-02-09 01:32:31 INFO  Environment:239 - HHH000206: hibernate.properties not found
+2014-02-09 01:32:31 INFO  Environment:346 - HHH000021: Bytecode provider name : javassist
+2014-02-09 01:32:31 INFO  Configuration:2073 - HHH000043: Configuring from resource: /hibernate.cfg.xml
+2014-02-09 01:32:31 INFO  Configuration:2092 - HHH000040: Configuration resource: /hibernate.cfg.xml
+2014-02-09 01:32:32 WARN  DTDEntityResolver:75 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2014-02-09 01:32:32 INFO  Configuration:2214 - HHH000041: Configured SessionFactory: null
+2014-02-09 01:32:32 INFO  DriverManagerConnectionProviderImpl:93 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2014-02-09 01:32:32 INFO  DriverManagerConnectionProviderImpl:166 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/library]
+2014-02-09 01:32:32 INFO  DriverManagerConnectionProviderImpl:175 - HHH000046: Connection properties: {user=root, password=****, autocommit=true}
+2014-02-09 01:32:32 INFO  DriverManagerConnectionProviderImpl:180 - HHH000006: Autocommit mode: true
+2014-02-09 01:32:32 INFO  DriverManagerConnectionProviderImpl:102 - HHH000115: Hibernate connection pool size: 1 (min=1)
+2014-02-09 01:32:33 INFO  Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2014-02-09 01:32:34 INFO  LobCreatorBuilder:97 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+2014-02-09 01:32:34 INFO  TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+2014-02-09 01:32:34 INFO  ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+2014-02-09 01:32:37 INFO  BookDao:23 - saveOrUpdate : Book [bookid=null, bookName=bookName9e806d38-2789-471b-9fb3-f54c480b1a2c, isbn=isbn9e806d38-2789-471b-9fb3-f54c480b1a2c, copies=10]
+2014-02-09 01:32:38 INFO  LoanService:133 - Return true
+2014-02-09 01:32:38 INFO  TC10:76 - Exited setUp
+2014-02-09 01:32:38 INFO  TC10:87 - Entering testRenewBook
+2014-02-09 01:32:39 INFO  UserDao:103 - user : User [userId=2, firstName=firstName9e806d38-2789-471b-9fb3-f54c480b1a2c, lastName=lastName9e806d38-2789-471b-9fb3-f54c480b1a2c, username=username9e806d38-2789-471b-9fb3-f54c480b1a2c, password=pWord9e806d38-2789-471b-9fb3-f54c480b1a2c, role=Student]
+2014-02-09 01:32:39 INFO  UserDao:113 - return
+2014-02-09 01:32:39 INFO  TC11:52 - Entered setUp
+2014-02-09 01:32:39 INFO  BookDao:23 - saveOrUpdate : Book [bookid=null, bookName=bookname4b3296c8-d98c-47d2-ab05-6af4bb47ed3d, isbn=isbn4b3296c8-d98c-47d2-ab05-6af4bb47ed3d, copies=10]
+2014-02-09 01:32:39 INFO  LoanService:133 - Return true
+2014-02-09 01:32:39 INFO  TC11:80 - Exited 
+2014-02-09 01:32:39 INFO  TC11:94 - Entered testRenewExpiredLoan
+2014-02-09 01:38:40 INFO  UserDao:103 - user : User [userId=3, firstName=fName4b3296c8-d98c-47d2-ab05-6af4bb47ed3d, lastName=lName4b3296c8-d98c-47d2-ab05-6af4bb47ed3d, username=uName4b3296c8-d98c-47d2-ab05-6af4bb47ed3d, password=pWord4b3296c8-d98c-47d2-ab05-6af4bb47ed3d, role=Administrator]
+2014-02-09 01:38:40 INFO  UserDao:113 - return
+2014-02-09 01:38:40 INFO  TC12:53 - Entered setUp
+2014-02-09 01:38:40 INFO  BookDao:23 - saveOrUpdate : Book [bookid=null, bookName=bookname15cb2071-e75c-4372-9156-6678003d0dbf, isbn=isbn15cb2071-e75c-4372-9156-6678003d0dbf, copies=10]
+2014-02-09 01:38:40 INFO  LoanService:133 - Return true
+2014-02-09 01:38:40 INFO  LoanService:32 - Entered renewLoan
+2014-02-09 01:38:40 INFO  LoanService:50 - Return Renewed
+2014-02-09 01:38:40 INFO  LoanService:32 - Entered renewLoan
+2014-02-09 01:38:41 INFO  LoanService:50 - Return Renewed
+2014-02-09 01:38:41 INFO  LoanService:32 - Entered renewLoan
+2014-02-09 01:38:41 INFO  LoanService:50 - Return Renewed
+2014-02-09 01:38:41 INFO  TC12:85 - Exited 
+2014-02-09 01:38:41 INFO  TC12:99 - Entered testRenewAfterMaxRenewalCount
+2014-02-09 01:38:43 INFO  UserDao:103 - user : User [userId=4, firstName=fName15cb2071-e75c-4372-9156-6678003d0dbf, lastName=lName15cb2071-e75c-4372-9156-6678003d0dbf, username=uName15cb2071-e75c-4372-9156-6678003d0dbf, password=pWord15cb2071-e75c-4372-9156-6678003d0dbf, role=Administrator]
+2014-02-09 01:38:43 INFO  UserDao:113 - return
+2014-02-09 01:38:43 INFO  BookDao:23 - saveOrUpdate : Book [bookid=null, bookName=booknamee0dbe2a1-28e6-43e0-b847-47d444094f90, isbn=isbne0dbe2a1-28e6-43e0-b847-47d444094f90, copies=10]
+2014-02-09 01:38:43 INFO  LoanService:133 - Return true
+2014-02-09 01:38:43 INFO  TC13:83 - Exited setUp
+2014-02-09 01:38:43 INFO  TC13:97 - Entered testTC13RenewExpiredLoan
+2014-02-09 01:42:45 INFO  UserDao:103 - user : User [userId=5, firstName=fNamee0dbe2a1-28e6-43e0-b847-47d444094f90, lastName=lNamee0dbe2a1-28e6-43e0-b847-47d444094f90, username=uNamee0dbe2a1-28e6-43e0-b847-47d444094f90, password=pWorde0dbe2a1-28e6-43e0-b847-47d444094f90, role=Administrator]
+2014-02-09 01:42:45 INFO  UserDao:113 - return
+2014-02-09 01:42:46 INFO  BookDao:23 - saveOrUpdate : Book [bookid=null, bookName=booknameba9e6596-72b5-4204-89b4-847966cfe186, isbn=isbnba9e6596-72b5-4204-89b4-847966cfe186, copies=10]
+2014-02-09 01:42:47 INFO  LoanService:133 - Return true
+2014-02-09 01:42:47 INFO  TC14a:80 - Exited setUp
+2014-02-09 01:42:47 INFO  TC14a:94 - Entered testTC14aReturnLoan
+2014-02-09 01:42:47 INFO  TC14a:97 - 5   6
+2014-02-09 01:42:48 INFO  UserDao:103 - user : User [userId=6, firstName=fNameba9e6596-72b5-4204-89b4-847966cfe186, lastName=lNameba9e6596-72b5-4204-89b4-847966cfe186, username=uNameba9e6596-72b5-4204-89b4-847966cfe186, password=pWordba9e6596-72b5-4204-89b4-847966cfe186, role=Administrator]
+2014-02-09 01:42:48 INFO  UserDao:113 - return
+2014-02-09 01:42:48 INFO  BookDao:23 - saveOrUpdate : Book [bookid=null, bookName=booknameb1e99239-0277-440c-8613-ae3c68cc83c5, isbn=isbnb1e99239-0277-440c-8613-ae3c68cc83c5, copies=10]
+2014-02-09 01:42:48 INFO  LoanService:133 - Return true
+2014-02-09 01:42:48 INFO  TC14c:80 - Exited setUp
+2014-02-09 01:42:48 INFO  TC14c:94 - Entered testTC14aReturnLoan
+2014-02-09 01:55:12 INFO  TC1:33 - Entered setUp for CreateUserTest
+2014-02-09 01:55:13 INFO  TC10:51 - Entered setUp
+2014-02-09 01:55:13 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2014-02-09 01:55:13 INFO  Version:54 - HHH000412: Hibernate Core {4.3.0.Final}
+2014-02-09 01:55:13 INFO  Environment:239 - HHH000206: hibernate.properties not found
+2014-02-09 01:55:13 INFO  Environment:346 - HHH000021: Bytecode provider name : javassist
+2014-02-09 01:55:13 INFO  Configuration:2073 - HHH000043: Configuring from resource: /hibernate.cfg.xml
+2014-02-09 01:55:13 INFO  Configuration:2092 - HHH000040: Configuration resource: /hibernate.cfg.xml
+2014-02-09 01:55:14 WARN  DTDEntityResolver:75 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2014-02-09 01:55:14 INFO  Configuration:2214 - HHH000041: Configured SessionFactory: null
+2014-02-09 01:55:14 INFO  DriverManagerConnectionProviderImpl:93 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2014-02-09 01:55:14 INFO  DriverManagerConnectionProviderImpl:166 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/library]
+2014-02-09 01:55:14 INFO  DriverManagerConnectionProviderImpl:175 - HHH000046: Connection properties: {user=root, password=****, autocommit=true}
+2014-02-09 01:55:14 INFO  DriverManagerConnectionProviderImpl:180 - HHH000006: Autocommit mode: true
+2014-02-09 01:55:14 INFO  DriverManagerConnectionProviderImpl:102 - HHH000115: Hibernate connection pool size: 1 (min=1)
+2014-02-09 01:55:14 INFO  Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2014-02-09 01:55:14 INFO  LobCreatorBuilder:97 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+2014-02-09 01:55:15 INFO  TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+2014-02-09 01:55:15 INFO  ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+2014-02-09 01:55:15 INFO  BookDao:23 - saveOrUpdate : Book [bookid=null, bookName=bookName80a8baba-2794-4226-b2d0-df2f96e2647c, isbn=isbn80a8baba-2794-4226-b2d0-df2f96e2647c, copies=10]
+2014-02-09 01:55:16 INFO  LoanService:133 - Return true
+2014-02-09 01:55:16 INFO  TC10:76 - Exited setUp
+2014-02-09 01:55:16 INFO  TC10:87 - Entering testRenewBook
+2014-02-09 01:55:16 INFO  UserDao:103 - user : User [userId=8, firstName=firstName80a8baba-2794-4226-b2d0-df2f96e2647c, lastName=lastName80a8baba-2794-4226-b2d0-df2f96e2647c, username=username80a8baba-2794-4226-b2d0-df2f96e2647c, password=pWord80a8baba-2794-4226-b2d0-df2f96e2647c, role=Student]
+2014-02-09 01:55:16 INFO  UserDao:113 - return
+2014-02-09 01:55:16 INFO  TC11:52 - Entered setUp
+2014-02-09 01:55:16 INFO  BookDao:23 - saveOrUpdate : Book [bookid=null, bookName=bookname00575ef5-3709-4c33-b835-cf9c07658954, isbn=isbn00575ef5-3709-4c33-b835-cf9c07658954, copies=10]
+2014-02-09 01:55:16 INFO  LoanService:133 - Return true
+2014-02-09 01:55:16 INFO  TC11:80 - Exited 
+2014-02-09 01:55:16 INFO  TC11:94 - Entered testRenewExpiredLoan
+2014-02-09 02:01:17 INFO  UserDao:103 - user : User [userId=9, firstName=fName00575ef5-3709-4c33-b835-cf9c07658954, lastName=lName00575ef5-3709-4c33-b835-cf9c07658954, username=uName00575ef5-3709-4c33-b835-cf9c07658954, password=pWord00575ef5-3709-4c33-b835-cf9c07658954, role=Administrator]
+2014-02-09 02:01:17 INFO  UserDao:113 - return
+2014-02-09 02:01:17 INFO  TC12:53 - Entered setUp
+2014-02-09 02:01:17 INFO  BookDao:23 - saveOrUpdate : Book [bookid=null, bookName=booknamed05dfaa6-da82-492c-b434-df64aa53ed5b, isbn=isbnd05dfaa6-da82-492c-b434-df64aa53ed5b, copies=10]
+2014-02-09 02:01:17 INFO  LoanService:133 - Return true
+2014-02-09 02:01:17 INFO  LoanService:32 - Entered renewLoan
+2014-02-09 02:01:17 INFO  LoanService:50 - Return Renewed
+2014-02-09 02:01:17 INFO  LoanService:32 - Entered renewLoan
+2014-02-09 02:01:17 INFO  LoanService:50 - Return Renewed
+2014-02-09 02:01:17 INFO  LoanService:32 - Entered renewLoan
+2014-02-09 02:01:17 INFO  LoanService:50 - Return Renewed
+2014-02-09 02:01:17 INFO  TC12:85 - Exited 
+2014-02-09 02:01:17 INFO  TC12:99 - Entered testRenewAfterMaxRenewalCount
+2014-02-09 02:01:18 INFO  UserDao:103 - user : User [userId=10, firstName=fNamed05dfaa6-da82-492c-b434-df64aa53ed5b, lastName=lNamed05dfaa6-da82-492c-b434-df64aa53ed5b, username=uNamed05dfaa6-da82-492c-b434-df64aa53ed5b, password=pWordd05dfaa6-da82-492c-b434-df64aa53ed5b, role=Administrator]
+2014-02-09 02:01:18 INFO  UserDao:113 - return
+2014-02-09 02:01:18 INFO  BookDao:23 - saveOrUpdate : Book [bookid=null, bookName=booknamea54e50ca-8864-4070-9740-aeb0af41d250, isbn=isbna54e50ca-8864-4070-9740-aeb0af41d250, copies=10]
+2014-02-09 02:01:18 INFO  LoanService:133 - Return true
+2014-02-09 02:01:18 INFO  TC13:83 - Exited setUp
+2014-02-09 02:01:18 INFO  TC13:97 - Entered testTC13RenewExpiredLoan
+2014-02-09 02:05:19 INFO  UserDao:103 - user : User [userId=11, firstName=fNamea54e50ca-8864-4070-9740-aeb0af41d250, lastName=lNamea54e50ca-8864-4070-9740-aeb0af41d250, username=uNamea54e50ca-8864-4070-9740-aeb0af41d250, password=pWorda54e50ca-8864-4070-9740-aeb0af41d250, role=Administrator]
+2014-02-09 02:05:19 INFO  UserDao:113 - return
+2014-02-09 02:05:19 INFO  BookDao:23 - saveOrUpdate : Book [bookid=null, bookName=bookname651cc908-8a74-460a-8bbd-ad77da427a3a, isbn=isbn651cc908-8a74-460a-8bbd-ad77da427a3a, copies=10]
+2014-02-09 02:05:19 INFO  LoanService:133 - Return true
+2014-02-09 02:05:19 INFO  TC14a:80 - Exited setUp
+2014-02-09 02:05:19 INFO  TC14a:94 - Entered testTC14aReturnLoan
+2014-02-09 02:05:19 INFO  TC14a:97 - 11   12
+2014-02-09 02:05:21 INFO  UserDao:103 - user : User [userId=12, firstName=fName651cc908-8a74-460a-8bbd-ad77da427a3a, lastName=lName651cc908-8a74-460a-8bbd-ad77da427a3a, username=uName651cc908-8a74-460a-8bbd-ad77da427a3a, password=pWord651cc908-8a74-460a-8bbd-ad77da427a3a, role=Administrator]
+2014-02-09 02:05:21 INFO  UserDao:113 - return
+2014-02-09 02:05:21 INFO  BookDao:23 - saveOrUpdate : Book [bookid=null, bookName=bookname273c7747-af12-43e8-be1b-67be6d6d44d5, isbn=isbn273c7747-af12-43e8-be1b-67be6d6d44d5, copies=10]
+2014-02-09 02:05:21 INFO  LoanService:133 - Return true
+2014-02-09 02:05:21 INFO  TC14c:80 - Exited setUp
+2014-02-09 02:05:21 INFO  TC14c:94 - Entered testTC14aReturnLoan
+2014-02-09 02:09:22 INFO  UserDao:103 - user : User [userId=13, firstName=fName273c7747-af12-43e8-be1b-67be6d6d44d5, lastName=lName273c7747-af12-43e8-be1b-67be6d6d44d5, username=uName273c7747-af12-43e8-be1b-67be6d6d44d5, password=pWord273c7747-af12-43e8-be1b-67be6d6d44d5, role=Administrator]
+2014-02-09 02:09:22 INFO  UserDao:113 - return
+2014-02-09 02:09:22 INFO  BookDao:23 - saveOrUpdate : Book [bookid=null, bookName=bookname085557b1-f1ed-439f-98ca-16f698da145e, isbn=isbn085557b1-f1ed-439f-98ca-16f698da145e, copies=10]
+2014-02-09 02:09:22 INFO  BookDao:23 - saveOrUpdate : Book [bookid=null, bookName=bookname2085557b1-f1ed-439f-98ca-16f698da145e, isbn=isbn2085557b1-f1ed-439f-98ca-16f698da145e, copies=20]
+2014-02-09 02:09:22 INFO  LoanService:133 - Return true
+2014-02-09 02:12:53 INFO  TC1:33 - Entered setUp for CreateUserTest
+2014-02-09 02:12:56 INFO  TC1:44 - Exited setUp
+2014-02-09 02:12:57 INFO  TC1:94 - parameterUserName = MyUser1391929973926
+2014-02-09 02:12:57 INFO  TC1:97 - Exited testTC1AddUser
+2014-02-09 02:12:57 INFO  TC1:49 - Entered teadDown of TC1 CreateUser
+2014-02-09 02:12:58 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2014-02-09 02:12:58 INFO  Version:54 - HHH000412: Hibernate Core {4.3.0.Final}
+2014-02-09 02:12:58 INFO  Environment:239 - HHH000206: hibernate.properties not found
+2014-02-09 02:12:58 INFO  Environment:346 - HHH000021: Bytecode provider name : javassist
+2014-02-09 02:12:58 INFO  Configuration:2073 - HHH000043: Configuring from resource: /hibernate.cfg.xml
+2014-02-09 02:12:58 INFO  Configuration:2092 - HHH000040: Configuration resource: /hibernate.cfg.xml
+2014-02-09 02:12:58 WARN  DTDEntityResolver:75 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2014-02-09 02:12:58 INFO  Configuration:2214 - HHH000041: Configured SessionFactory: null
+2014-02-09 02:12:58 INFO  DriverManagerConnectionProviderImpl:93 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2014-02-09 02:12:58 INFO  DriverManagerConnectionProviderImpl:166 - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/library]
+2014-02-09 02:12:58 INFO  DriverManagerConnectionProviderImpl:175 - HHH000046: Connection properties: {user=root, password=****, autocommit=true}
+2014-02-09 02:12:58 INFO  DriverManagerConnectionProviderImpl:180 - HHH000006: Autocommit mode: true
+2014-02-09 02:12:58 INFO  DriverManagerConnectionProviderImpl:102 - HHH000115: Hibernate connection pool size: 1 (min=1)
+2014-02-09 02:12:59 INFO  Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2014-02-09 02:12:59 INFO  LobCreatorBuilder:97 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+2014-02-09 02:12:59 INFO  TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+2014-02-09 02:12:59 INFO  ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+2014-02-09 02:13:00 INFO  TC1:53 - trying to delete the user with UserName: MyUser1391929973926
+2014-02-09 02:13:00 INFO  UserDao:63 - isValid username : MyUser1391929973926
+2014-02-09 02:13:00 INFO  UserDao:71 - return user : User [userId=15, firstName=TestFirstName, lastName=TestLastName, username=MyUser1391929973926, password=password, role=Student]
+2014-02-09 02:13:00 INFO  UserDao:103 - user : User [userId=15, firstName=TestFirstName, lastName=TestLastName, username=MyUser1391929973926, password=password, role=Student]
+2014-02-09 02:13:00 INFO  UserDao:113 - return
+2014-02-09 02:13:00 INFO  TC1:64 - Exited teadDown of TC1 CreateUser
+2014-02-09 02:13:00 INFO  TC10:51 - Entered setUp
+2014-02-09 02:13:00 INFO  BookDao:23 - saveOrUpdate : Book [bookid=null, bookName=bookNamea8f35687-bc56-4a81-b276-4f8b91600e76, isbn=isbna8f35687-bc56-4a81-b276-4f8b91600e76, copies=10]
+2014-02-09 02:13:00 INFO  LoanService:133 - Return true
+2014-02-09 02:13:00 INFO  TC10:76 - Exited setUp
+2014-02-09 02:13:00 INFO  TC10:87 - Entering testRenewBook
+2014-02-09 02:13:01 INFO  TC10:96 - Exited testRenewBook
+2014-02-09 02:13:01 INFO  UserDao:103 - user : User [userId=17, firstName=firstNamea8f35687-bc56-4a81-b276-4f8b91600e76, lastName=lastNamea8f35687-bc56-4a81-b276-4f8b91600e76, username=usernamea8f35687-bc56-4a81-b276-4f8b91600e76, password=pWorda8f35687-bc56-4a81-b276-4f8b91600e76, role=Student]
+2014-02-09 02:13:01 INFO  UserDao:113 - return
+2014-02-09 02:13:01 INFO  TC11:52 - Entered setUp
+2014-02-09 02:13:01 INFO  BookDao:23 - saveOrUpdate : Book [bookid=null, bookName=bookname9ac4f0df-455e-479d-8437-b943a8705147, isbn=isbn9ac4f0df-455e-479d-8437-b943a8705147, copies=10]
+2014-02-09 02:13:01 INFO  LoanService:133 - Return true
+2014-02-09 02:13:01 INFO  TC11:80 - Exited 
+2014-02-09 02:13:01 INFO  TC11:94 - Entered testRenewExpiredLoan
+2014-02-09 02:19:01 INFO  TC11:106 - Exited testRenewExpiredLoan
+2014-02-09 02:19:01 INFO  UserDao:103 - user : User [userId=18, firstName=fName9ac4f0df-455e-479d-8437-b943a8705147, lastName=lName9ac4f0df-455e-479d-8437-b943a8705147, username=uName9ac4f0df-455e-479d-8437-b943a8705147, password=pWord9ac4f0df-455e-479d-8437-b943a8705147, role=Administrator]
+2014-02-09 02:19:01 INFO  UserDao:113 - return
+2014-02-09 02:19:01 INFO  TC12:53 - Entered setUp
+2014-02-09 02:19:01 INFO  BookDao:23 - saveOrUpdate : Book [bookid=null, bookName=booknamed5a37578-dd80-4bf0-a208-17cf57cbcfa9, isbn=isbnd5a37578-dd80-4bf0-a208-17cf57cbcfa9, copies=10]
+2014-02-09 02:19:01 INFO  LoanService:133 - Return true
+2014-02-09 02:19:01 INFO  LoanService:32 - Entered renewLoan
+2014-02-09 02:19:01 INFO  LoanService:50 - Return Renewed
+2014-02-09 02:19:01 INFO  LoanService:32 - Entered renewLoan
+2014-02-09 02:19:01 INFO  LoanService:50 - Return Renewed
+2014-02-09 02:19:01 INFO  LoanService:32 - Entered renewLoan
+2014-02-09 02:19:01 INFO  LoanService:50 - Return Renewed
+2014-02-09 02:19:01 INFO  TC12:85 - Exited 
+2014-02-09 02:19:01 INFO  TC12:99 - Entered testRenewAfterMaxRenewalCount
+2014-02-09 02:19:01 INFO  TC12:112 - Exited testRenewAfterMaxRenewalCount
+2014-02-09 02:19:01 INFO  UserDao:103 - user : User [userId=19, firstName=fNamed5a37578-dd80-4bf0-a208-17cf57cbcfa9, lastName=lNamed5a37578-dd80-4bf0-a208-17cf57cbcfa9, username=uNamed5a37578-dd80-4bf0-a208-17cf57cbcfa9, password=pWordd5a37578-dd80-4bf0-a208-17cf57cbcfa9, role=Administrator]
+2014-02-09 02:19:01 INFO  UserDao:113 - return
+2014-02-09 02:19:01 INFO  BookDao:23 - saveOrUpdate : Book [bookid=null, bookName=bookname0145e0b2-3b66-447f-a6e2-06b54e148180, isbn=isbn0145e0b2-3b66-447f-a6e2-06b54e148180, copies=10]
+2014-02-09 02:19:01 INFO  LoanService:133 - Return true
+2014-02-09 02:19:01 INFO  TC13:83 - Exited setUp
+2014-02-09 02:19:01 INFO  TC13:97 - Entered testTC13RenewExpiredLoan
+2014-02-09 02:23:01 INFO  TC13:111 - Exited testTC13RenewExpiredLoan
+2014-02-09 02:23:01 INFO  UserDao:103 - user : User [userId=20, firstName=fName0145e0b2-3b66-447f-a6e2-06b54e148180, lastName=lName0145e0b2-3b66-447f-a6e2-06b54e148180, username=uName0145e0b2-3b66-447f-a6e2-06b54e148180, password=pWord0145e0b2-3b66-447f-a6e2-06b54e148180, role=Administrator]
+2014-02-09 02:23:01 INFO  UserDao:113 - return
+2014-02-09 02:23:02 INFO  BookDao:23 - saveOrUpdate : Book [bookid=null, bookName=bookname875bddbd-b763-4048-87be-cbab52bc42d6, isbn=isbn875bddbd-b763-4048-87be-cbab52bc42d6, copies=10]
+2014-02-09 02:23:02 INFO  LoanService:133 - Return true
+2014-02-09 02:23:02 INFO  TC14a:80 - Exited setUp
+2014-02-09 02:23:02 INFO  TC14a:94 - Entered testTC14aReturnLoan
+2014-02-09 02:23:02 INFO  TC14a:97 - 18   21
+2014-02-09 02:23:02 INFO  TC14a:106 - Exited testTC14aReturnLoan
+2014-02-09 02:23:02 INFO  UserDao:103 - user : User [userId=21, firstName=fName875bddbd-b763-4048-87be-cbab52bc42d6, lastName=lName875bddbd-b763-4048-87be-cbab52bc42d6, username=uName875bddbd-b763-4048-87be-cbab52bc42d6, password=pWord875bddbd-b763-4048-87be-cbab52bc42d6, role=Administrator]
+2014-02-09 02:23:02 INFO  UserDao:113 - return
+2014-02-09 02:23:02 INFO  BookDao:23 - saveOrUpdate : Book [bookid=null, bookName=booknamefb76c0cf-028c-43b2-9eec-71711d6aadcc, isbn=isbnfb76c0cf-028c-43b2-9eec-71711d6aadcc, copies=10]
+2014-02-09 02:23:02 INFO  LoanService:133 - Return true
+2014-02-09 02:23:02 INFO  TC14c:80 - Exited setUp
+2014-02-09 02:23:02 INFO  TC14c:94 - Entered testTC14aReturnLoan
+2014-02-09 02:27:02 INFO  TC14c:107 - Exited testTC14aReturnLoan
+2014-02-09 02:27:02 INFO  UserDao:103 - user : User [userId=22, firstName=fNamefb76c0cf-028c-43b2-9eec-71711d6aadcc, lastName=lNamefb76c0cf-028c-43b2-9eec-71711d6aadcc, username=uNamefb76c0cf-028c-43b2-9eec-71711d6aadcc, password=pWordfb76c0cf-028c-43b2-9eec-71711d6aadcc, role=Administrator]
+2014-02-09 02:27:02 INFO  UserDao:113 - return
+2014-02-09 02:27:02 INFO  BookDao:23 - saveOrUpdate : Book [bookid=null, bookName=bookname68a428b1-1098-4d17-8dd9-672e7917f5c4, isbn=isbn68a428b1-1098-4d17-8dd9-672e7917f5c4, copies=10]
+2014-02-09 02:27:02 INFO  BookDao:23 - saveOrUpdate : Book [bookid=null, bookName=bookname268a428b1-1098-4d17-8dd9-672e7917f5c4, isbn=isbn268a428b1-1098-4d17-8dd9-672e7917f5c4, copies=20]
+2014-02-09 02:27:02 INFO  LoanService:133 - Return true
+2014-02-09 02:31:02 INFO  TC15:86 - Exited setUp
+2014-02-09 02:31:02 INFO  TC15:101 - Entered testTC15BorrowLoan
+2014-02-09 02:31:02 INFO  TC15:114 - Exited testTC15BorrowLoan
+2014-02-09 02:31:02 INFO  UserDao:103 - user : User [userId=23, firstName=fName68a428b1-1098-4d17-8dd9-672e7917f5c4, lastName=lName68a428b1-1098-4d17-8dd9-672e7917f5c4, username=uName68a428b1-1098-4d17-8dd9-672e7917f5c4, password=pWord68a428b1-1098-4d17-8dd9-672e7917f5c4, role=Administrator]
+2014-02-09 02:31:02 INFO  UserDao:113 - return
+2014-02-09 02:31:02 INFO  TC3:38 - Entered setUp for TC 16 Delete User Test
+2014-02-09 02:31:03 INFO  TC3:49 - Exited setUp for TC 16 Delete User Test
+2014-02-09 02:31:03 INFO  TC3:57 - Entered TC16 testDeleteUser
+2014-02-09 02:31:03 INFO  TC3:66 - User addedMyUser1391931063067
+2014-02-09 02:31:03 INFO  TC3:67 - trying to delete userID: 24
+2014-02-09 02:31:03 INFO  TC3:75 - Exited TC16 testDeleteUser
+2014-02-09 02:31:03 INFO  TC17:53 - Entered setUp for Tc17
+2014-02-09 02:31:03 INFO  TC17:62 - Exited setUp for TC17
+2014-02-09 02:31:03 INFO  BookDao:23 - saveOrUpdate : Book [bookid=null, bookName=MyBook1391931063176, isbn=testISBN1391931063176, copies=2]
+2014-02-09 02:31:03 INFO  TC17:94 - User addedMyUser1391931063176
+2014-02-09 02:31:03 INFO  TC17:98 - Book 23 user 25
+2014-02-09 02:31:03 INFO  TC17:109 - Loan created: 21
+2014-02-09 02:31:03 INFO  TC17:110 - trying to delete userID: 25
+2014-02-09 02:34:03 INFO  TC17:123 - Exited TC17 testDeleteUserWithLateFee
+2014-02-09 02:34:03 INFO  TC17:68 - Entered tear down for TC17
+2014-02-09 02:34:03 INFO  TC17:69 - trying to delete the loanID: 21
+2014-02-09 02:34:03 INFO  TC17:72 - trying to delete the BookID: 23
+2014-02-09 02:34:03 INFO  TC17:75 - trying to delete the UserID: 25
+2014-02-09 02:34:03 INFO  UserDao:103 - user : User [userId=25, firstName=TestFirstName, lastName=TestLastName, username=MyUser1391931063176, password=password, role=Student]
+2014-02-09 02:34:03 INFO  UserDao:113 - return
+2014-02-09 02:34:03 INFO  TC17:79 - Exit tear down for TC17
+2014-02-09 02:34:03 INFO  TC18:57 - Entered setUp for TC18
+2014-02-09 02:34:03 INFO  TC18:68 - Exited setUp for TC18
+2014-02-09 02:34:03 INFO  TC18:90 - Entered TC18 testDeleteUserWithLoan
+2014-02-09 02:34:03 INFO  BookDao:23 - saveOrUpdate : Book [bookid=null, bookName=MyBook1391931243291, isbn=testISBN1391931243291, copies=2]
+2014-02-09 02:34:03 INFO  TC18:101 - User addedMyUser1391931243291
+2014-02-09 02:34:03 INFO  TC18:105 - Book 24 user 26
+2014-02-09 02:34:03 INFO  TC18:116 - Loan created: 22
+2014-02-09 02:34:03 INFO  TC18:117 - trying to delete userID: 26
+2014-02-09 02:34:03 INFO  TC18:128 - Exited TC18 testDeleteUserWithLoan
+2014-02-09 02:34:03 INFO  TC18:75 - Entered tear down for TC18
+2014-02-09 02:34:03 INFO  TC18:76 - trying to delete the loanID: 22
+2014-02-09 02:34:03 INFO  TC18:79 - trying to delete the BookID: 24
+2014-02-09 02:34:03 INFO  TC18:82 - trying to delete the UserID: 26
+2014-02-09 02:34:03 INFO  UserDao:103 - user : User [userId=26, firstName=TestFirstName, lastName=TestLastName, username=MyUser1391931243291, password=password, role=Student]
+2014-02-09 02:34:03 INFO  UserDao:113 - return
+2014-02-09 02:34:03 INFO  TC18:86 - Exit tear down for TC17
+2014-02-09 02:34:03 INFO  TC19:58 - Entered setUp
+2014-02-09 02:34:03 INFO  BookDao:23 - saveOrUpdate : Book [bookid=null, bookName=booknamef1546ae3-8381-48e8-9796-9c1ada0d5cce, isbn=isbnf1546ae3-8381-48e8-9796-9c1ada0d5cce, copies=10]
+2014-02-09 02:34:03 INFO  LoanService:133 - Return true
+2014-02-09 02:34:03 INFO  TC19:84 - Exited setUp
+2014-02-09 02:34:03 INFO  TC19:101 - Entered testTC19PayFine
+2014-02-09 02:34:03 INFO  TC19:102 -  loanID : 23 bookID : 25 userID : 27
+2014-02-09 02:40:03 INFO  TC19:114 - Exited testTC19PayFine
+2014-02-09 02:40:03 INFO  UserDao:103 - user : User [userId=27, firstName=fNamef1546ae3-8381-48e8-9796-9c1ada0d5cce, lastName=lNamef1546ae3-8381-48e8-9796-9c1ada0d5cce, username=uNamef1546ae3-8381-48e8-9796-9c1ada0d5cce, password=pWordf1546ae3-8381-48e8-9796-9c1ada0d5cce, role=Administrator]
+2014-02-09 02:40:03 INFO  UserDao:113 - return
+2014-02-09 02:40:03 INFO  TC2:34 - Entered setUp for TC2
+2014-02-09 02:40:03 INFO  TC2:45 - Exited setUp for TC2
+2014-02-09 02:40:03 INFO  TC2:98 - FirstUserName = MyFirstUser1391931603616
+2014-02-09 02:40:04 INFO  TC2:115 - FirstUserName = MySecondUser1391931603616
+2014-02-09 02:40:04 INFO  TC2:118 - Exited testTC2AddTwoUsers
+2014-02-09 02:40:04 INFO  TC2:50 - Entered tearDown of TC2
+2014-02-09 02:40:04 INFO  TC2:54 - trying to delete the user with UserName: MyFirstUser1391931603616, MySecondUser1391931603616
+2014-02-09 02:40:04 INFO  UserDao:63 - isValid username : MyFirstUser1391931603616
+2014-02-09 02:40:04 INFO  UserDao:71 - return user : User [userId=28, firstName=TestFirstName, lastName=TestLastName, username=MyFirstUser1391931603616, password=password, role=Student]
+2014-02-09 02:40:04 INFO  UserDao:63 - isValid username : MySecondUser1391931603616
+2014-02-09 02:40:04 INFO  UserDao:71 - return user : User [userId=30, firstName=TestSecondName, lastName=TestLastName, username=MySecondUser1391931603616, password=password, role=Student]
+2014-02-09 02:40:04 INFO  UserDao:103 - user : User [userId=28, firstName=TestFirstName, lastName=TestLastName, username=MyFirstUser1391931603616, password=password, role=Student]
+2014-02-09 02:40:04 INFO  UserDao:113 - return
+2014-02-09 02:40:04 INFO  UserDao:103 - user : User [userId=30, firstName=TestSecondName, lastName=TestLastName, username=MySecondUser1391931603616, password=password, role=Student]
+2014-02-09 02:40:04 INFO  UserDao:113 - return
+2014-02-09 02:40:04 INFO  TC2:67 - Exited teadDown of TC2
+2014-02-09 02:40:04 INFO  TC20:53 - Entered setUp
+2014-02-09 02:40:04 INFO  BookDao:23 - saveOrUpdate : Book [bookid=null, bookName=booknamef9847776-fe56-45f9-ad8b-d55511f67840, isbn=isbnf9847776-fe56-45f9-ad8b-d55511f67840, copies=10]
+2014-02-09 02:40:04 INFO  LoanService:133 - Return true
+2014-02-09 02:40:04 INFO  LoanService:32 - Entered renewLoan
+2014-02-09 02:40:04 INFO  LoanService:50 - Return Renewed
+2014-02-09 02:40:04 INFO  TC20:79 - Exited setUp
+2014-02-09 02:40:04 INFO  TC20:90 - Entered testTC19PayFine
+2014-02-09 02:40:04 INFO  TC20:92 -  loanID : 24 bookID : 26 userID : 32
+2014-02-09 02:44:04 INFO  TC20:107 - loanID:24has latfee: 0
+2014-02-09 02:44:04 INFO  TC20:111 - Exited testTC19PayFine
+2014-02-09 02:44:04 INFO  TC22:46 - Entered setUp
+2014-02-09 02:44:04 INFO  BookDao:23 - saveOrUpdate : Book [bookid=null, bookName=bookname7456a2a3-8cf4-4068-907c-cbe6008405d3, isbn=isbn7456a2a3-8cf4-4068-907c-cbe6008405d3, copies=10]
+2014-02-09 02:44:04 INFO  LoanService:133 - Return true
+2014-02-09 02:44:04 INFO  TC22:70 - Exited setUp
+2014-02-09 02:44:04 INFO  TC22:81 - Entered testTC22BorrowBookAfterPayingFine
+2014-02-09 02:44:04 INFO  TC22:83 -  loanID : 25 bookID : 27 userID : 33
+2014-02-09 02:48:04 INFO  TC22:104 - Exited testTC22BorrowBookAfterPayingFine
+2014-02-09 02:48:04 INFO  TC24:39 - Entered setUp
+2014-02-09 02:48:04 INFO  TC24:41 - Exited setUp
+2014-02-09 02:48:04 INFO  TC24:51 - Entered testTC24RemoveTitle
+2014-02-09 02:48:04 INFO  TC24:69 - One book added
+2014-02-09 02:48:04 INFO  TC24:70 - getting retriving book id
+2014-02-09 02:48:04 INFO  TC24:86 - checking deleted book
+2014-02-09 02:48:05 INFO  TC24:98 - Exited testTC24RemoveTitle
+2014-02-09 02:48:05 INFO  TC25:34 - Entered setUp for TC 25 Delete book with multiple copies
+2014-02-09 02:48:05 INFO  TC25:35 - Exit setUp for TC 25 Delete book with multiple copies
+2014-02-09 02:48:05 INFO  TC25:43 - Entered TC25 
+2014-02-09 02:48:05 INFO  BookDao:23 - saveOrUpdate : Book [bookid=null, bookName=MyBookName1391932085007, isbn=MyBookisbn1391932085007, copies=2]
+2014-02-09 02:48:05 INFO  TC25:50 - Bookid created is: 30
+2014-02-09 02:48:05 INFO  TC25:52 - trying to delete the bookiD: 30
+2014-02-09 02:48:05 INFO  TC25:64 - Exited TC 25 
+2014-02-09 02:48:05 INFO  TC25a:52 - Entered setUp for TC 25a Delete book with multiple copies
+2014-02-09 02:48:05 INFO  TC25a:60 - Exit setUp for TC 25a Delete book with multiple copies
+2014-02-09 02:48:05 INFO  TC25a:81 - Entered TC25a 
+2014-02-09 02:48:05 INFO  TC25a:87 - User addedMyUser1391932085053
+2014-02-09 02:48:05 INFO  BookDao:23 - saveOrUpdate : Book [bookid=null, bookName=MyBookName1391932085053, isbn=MyBookisbn1391932085053, copies=2]
+2014-02-09 02:48:05 INFO  TC25a:90 - Bookid created is: 31
+2014-02-09 02:48:05 INFO  TC25a:102 - Loan created are 27,28 created for user 34
+2014-02-09 02:48:05 INFO  TC25a:105 - After the loan,Now Book 31has 0 copies
+2014-02-09 02:48:05 INFO  TC25a:119 - After the book is returned ,Now Book 31has 2 copies
+2014-02-09 02:48:05 INFO  TC25a:122 - trying to delete the bookiD: 31
+2014-02-09 02:48:05 INFO  TC25a:131 - Exited TC 25a 
+2014-02-09 02:48:05 INFO  TC25a:66 - Entered tear down for TC25a
+2014-02-09 02:48:05 INFO  TC25a:67 - trying to delete the loanID: 
+2014-02-09 02:48:05 INFO  TC25a:70 - trying to delete the BookID: 31
+2014-02-09 02:48:05 INFO  TC25a:73 - trying to delete the UserID: 34
+2014-02-09 02:48:05 INFO  UserDao:103 - user : User [userId=34, firstName=TestFirstName, lastName=TestLastName, username=MyUser1391932085053, password=password, role=Student]
+2014-02-09 02:48:05 INFO  UserDao:113 - return
+2014-02-09 02:48:05 INFO  TC25a:77 - Exit tear down for TC25a
+2014-02-09 02:48:05 INFO  TC25b:52 - Entered setUp for TC 25b Delete book with multiple copies
+2014-02-09 02:48:05 INFO  TC25b:60 - Exit setUp for TC 25b Delete book with multiple copies
+2014-02-09 02:48:05 INFO  TC25b:82 - Entered TC25b
+2014-02-09 02:48:05 INFO  TC25b:88 - User addedMyUser1391932085303
+2014-02-09 02:48:05 INFO  BookDao:23 - saveOrUpdate : Book [bookid=null, bookName=MyBookName1391932085303, isbn=MyBookisbn1391932085303, copies=2]
+2014-02-09 02:48:05 INFO  TC25b:91 - Bookid created is: 32
+2014-02-09 02:48:05 INFO  TC25b:103 - Loan created are 29,30 created for user 35
+2014-02-09 02:48:05 INFO  TC25b:106 - After the loan,Now Book 32has 0 copies
+2014-02-09 02:48:05 INFO  TC25b:115 - After the book is returned ,Now Book 32has 1 copies
+2014-02-09 02:48:05 INFO  TC25b:117 - trying to delete the bookiD: 32
+2014-02-09 02:48:05 INFO  TC25b:126 - Exited TC 25b Delete book with multiple copies
+2014-02-09 02:48:05 INFO  TC25b:66 - Entered tear down for TC25b
+2014-02-09 02:48:05 INFO  TC25b:67 - trying to delete the loanID: 
+2014-02-09 02:48:05 INFO  TC25b:70 - trying to delete the BookID: 32
+2014-02-09 02:48:05 INFO  TC25b:73 - trying to delete the UserID: 35
+2014-02-09 02:48:05 INFO  UserDao:103 - user : User [userId=35, firstName=TestFirstName, lastName=TestLastName, username=MyUser1391932085303, password=password, role=Student]
+2014-02-09 02:48:05 INFO  UserDao:113 - return
+2014-02-09 02:48:05 INFO  TC25b:77 - Exit tear down for TC25b
+2014-02-09 02:48:05 INFO  TC3:37 - Entered setUp for testTC3AddTitle
+2014-02-09 02:48:05 INFO  TC3:39 - Exited setUp for testTC3AddTitle
+2014-02-09 02:48:05 INFO  TC3:65 - Entered testTC3AddTitle
+2014-02-09 02:48:05 INFO  TC3:75 - isbn is: 362681539
+2014-02-09 02:48:05 INFO  TC3:87 - Looking for book with isbn: 362681539
+2014-02-09 02:48:05 INFO  TC3:90 - Exited testTC3AddTitle
+2014-02-09 02:48:05 INFO  TC3:45 - Entered teadDown of TC3 testTC3AddTitle
+2014-02-09 02:48:05 INFO  TC3:49 - trying to delete the book with ISBN: 362681539
+2014-02-09 02:48:05 INFO  TC3:60 - Exited teadDown of TC3 testTC3AddTitle
+2014-02-09 02:48:05 INFO  TC3:38 - Entered setUp for TC4 AddTwoTitle
+2014-02-09 02:48:05 INFO  TC3:49 - Exited setUp for TC4 AddTwoTitle
+2014-02-09 02:48:05 INFO  TC3:75 - Entered TC4 AddTwoTitle
+2014-02-09 02:48:05 INFO  TC3:91 - One book added
+2014-02-09 02:48:06 INFO  TC3:107 - checking book list
+2014-02-09 02:48:06 INFO  TC3:114 - 362681682 = 362681682
+2014-02-09 02:48:06 INFO  TC3:115 - 362681682 = 362681682
+2014-02-09 02:48:06 INFO  TC3:119 - Exited TC4 AddTwoTitle
+2014-02-09 02:48:06 INFO  TC3:54 - Entered teadDown of TC4 AddTwoTitle
+2014-02-09 02:48:06 INFO  TC3:58 - trying to delete the books with ISBN: 362681682,362681682
+2014-02-09 02:48:06 INFO  TC3:71 - Exited teadDown of TC4 AddTwoTitle
+2014-02-09 02:48:06 INFO  TC5:50 - Entered setUp of TC5 Add copies of a book
+2014-02-09 02:48:06 INFO  TC5:61 - Exited setUp of TC5 Add copies of a book
+2014-02-09 02:48:06 INFO  TC5:87 - Entered TC5 Add copies of a book
+2014-02-09 02:48:06 INFO  TC5:103 - One book added
+2014-02-09 02:48:06 INFO  TC5:104 - getting retriving book id
+2014-02-09 02:48:06 INFO  TC5:136 - checking updated book
+2014-02-09 02:48:06 INFO  TC5:148 - Exited TC5 Add copies of a book
+2014-02-09 02:48:06 INFO  TC5:66 - Entered tearDown of TC5 Add copies of a book
+2014-02-09 02:48:06 INFO  TC5:70 - trying to delete the book with ISBN: testisbn1362682214
+2014-02-09 02:48:06 INFO  TC5:81 - Exited teadDown of TC5 Add copies of a book
+2014-02-09 02:48:06 INFO  TC7:53 - Entered setUp
+2014-02-09 02:48:06 INFO  BookDao:23 - saveOrUpdate : Book [bookid=null, bookName=bookname01136e82-26ac-42fa-aecc-9c48dcb66a5e, isbn=isbn01136e82-26ac-42fa-aecc-9c48dcb66a5e, copies=10]
+2014-02-09 02:48:06 INFO  BookDao:23 - saveOrUpdate : Book [bookid=null, bookName=bookname3d87cd06-8a65-4fd5-810a-97938acdd685, isbn=isbn3d87cd06-8a65-4fd5-810a-97938acdd685, copies=20]
+2014-02-09 02:48:06 INFO  BookDao:23 - saveOrUpdate : Book [bookid=null, bookName=booknameaa3c5b33-5e82-4d07-a091-dd5aab138915, isbn=isbnaa3c5b33-5e82-4d07-a091-dd5aab138915, copies=30]
+2014-02-09 02:48:06 INFO  TC7:86 - Exited 
+2014-02-09 02:48:06 INFO  TC7:104 - Entered testBorrowMultipleCopies
+2014-02-09 02:48:06 INFO  TC7:105 - bookID : 41 userID : 36
+2014-02-09 02:48:06 INFO  TC7:133 - Exited testBorrowMultipleCopies
+2014-02-09 02:48:06 INFO  UserDao:103 - user : User [userId=36, firstName=fName01136e82-26ac-42fa-aecc-9c48dcb66a5e, lastName=lName01136e82-26ac-42fa-aecc-9c48dcb66a5e, username=uName01136e82-26ac-42fa-aecc-9c48dcb66a5e, password=pWord01136e82-26ac-42fa-aecc-9c48dcb66a5e, role=Administrator]
+2014-02-09 02:48:06 INFO  UserDao:113 - return
+2014-02-09 02:48:06 INFO  TC8:55 - Entered setUp
+2014-02-09 02:48:06 INFO  BookDao:23 - saveOrUpdate : Book [bookid=null, bookName=booknamecc43f0cb-a34f-4187-a637-1eae3d8cbeaf, isbn=isbncc43f0cb-a34f-4187-a637-1eae3d8cbeaf, copies=10]
+2014-02-09 02:48:06 INFO  TC8:106 - Entered testMultipleUserBorrowingSameCopy
+2014-02-09 02:48:06 INFO  TC8:134 - Exited testMultipleUserBorrowingSameCopy
+2014-02-09 02:48:06 INFO  UserDao:103 - user : User [userId=37, firstName=fNamed063704b-d5cc-4be8-83f4-9918590dcbda, lastName=lNamed063704b-d5cc-4be8-83f4-9918590dcbda, username=uNamed063704b-d5cc-4be8-83f4-9918590dcbda, password=pWordd063704b-d5cc-4be8-83f4-9918590dcbda, role=Student]
+2014-02-09 02:48:06 INFO  UserDao:113 - return
+2014-02-09 02:48:06 INFO  UserDao:103 - user : User [userId=38, firstName=fName026289ff-1832-4670-a893-1ade375057aa, lastName=lName026289ff-1832-4670-a893-1ade375057aa, username=uName026289ff-1832-4670-a893-1ade375057aa, password=pWord026289ff-1832-4670-a893-1ade375057aa, role=Student]
+2014-02-09 02:48:06 INFO  UserDao:113 - return
+2014-02-09 02:48:06 INFO  UserDao:103 - user : User [userId=39, firstName=fName6760ea6f-1886-4eda-bb0d-371f31c8f501, lastName=lName6760ea6f-1886-4eda-bb0d-371f31c8f501, username=uName6760ea6f-1886-4eda-bb0d-371f31c8f501, password=pWord6760ea6f-1886-4eda-bb0d-371f31c8f501, role=Student]
+2014-02-09 02:48:06 INFO  UserDao:113 - return
