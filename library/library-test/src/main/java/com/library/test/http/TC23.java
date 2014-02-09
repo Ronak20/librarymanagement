@@ -1,10 +1,12 @@
 package com.library.test.http;
 
+import junit.framework.TestCase;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TC21 {
+public class TC23 extends TestCase {
 
 	@Before
 	public void setUp() throws Exception {
@@ -16,7 +18,7 @@ public class TC21 {
 
 	@Test
 	public void test() {
-		
+
 	}
 
 }

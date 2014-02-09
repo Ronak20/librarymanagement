@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
+import junit.framework.TestCase;
+
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.junit.After;
@@ -27,7 +29,7 @@ import com.library.service.UserService;
 import com.meterware.httpunit.WebConversation;
 import com.meterware.httpunit.WebResponse;
 
-public class TC8 {
+public class TC8 extends TestCase {
 
 	private static Logger logger = Logger.getLogger(TC8.class);
 
@@ -43,11 +45,11 @@ public class TC8 {
 	private String userid1;
 	private String userid2;
 	private String userid3;
-	
+
 	private User user1;
 	private User user2;
 	private User user3;
-	
+
 	private String bookid;
 
 	@Before
@@ -59,27 +61,27 @@ public class TC8 {
 
 		userDao = new UserDao(session);
 		loanDao = new LoanDao(session);
-		loanService =  new LoanService(loanDao);
+		loanService = new LoanService(loanDao);
 		userService = new UserService(userDao, loanDao);
 
 		UUID uuid1 = UUID.randomUUID();
-		user1 = new User("fName" + uuid1, "lName" + uuid1,
-				"uName" + uuid1, "pWord" + uuid1, Role.STUDENT);
+		user1 = new User("fName" + uuid1, "lName" + uuid1, "uName" + uuid1,
+				"pWord" + uuid1, Role.STUDENT);
 		this.userid1 = userService.saveOrUpdate(user1);
 		user1.setUserId(userid1);
 
 		UUID uuid2 = UUID.randomUUID();
-		user2 = new User("fName" + uuid2, "lName" + uuid2,
-				"uName" + uuid2, "pWord" + uuid2, Role.STUDENT);
+		user2 = new User("fName" + uuid2, "lName" + uuid2, "uName" + uuid2,
+				"pWord" + uuid2, Role.STUDENT);
 		this.userid2 = userService.saveOrUpdate(user2);
 		user2.setUserId(userid2);
-		
+
 		UUID uuid3 = UUID.randomUUID();
-		user3 = new User("fName" + uuid3, "lName" + uuid3,
-				"uName" + uuid3, "pWord" + uuid3, Role.STUDENT);
+		user3 = new User("fName" + uuid3, "lName" + uuid3, "uName" + uuid3,
+				"pWord" + uuid3, Role.STUDENT);
 		this.userid3 = userService.saveOrUpdate(user3);
 		user3.setUserId(userid3);
-		
+
 		bookDao = new BookDao(session);
 		bookService = new BookService(bookDao, loanDao);
 
@@ -101,10 +103,11 @@ public class TC8 {
 	}
 
 	@Test
-	public void testMultipleUserBorrowingSameCopy() throws IOException, SAXException {
-		
+	public void testMultipleUserBorrowingSameCopy() throws IOException,
+			SAXException {
+
 		logger.info("Entered testMultipleUserBorrowingSameCopy");
-		
+
 		WebConversation conversation = new WebConversation();
 		WebResponse response = conversation.getResponse(Constant
 				.getRentBookUrl(bookid, userid1));

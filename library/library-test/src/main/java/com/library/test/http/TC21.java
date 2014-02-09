@@ -1,12 +1,12 @@
 package com.library.test.http;
 
-import static org.junit.Assert.*;
+import junit.framework.TestCase;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TC6 {
+public class TC21 extends TestCase{
 
 	@Before
 	public void setUp() throws Exception {

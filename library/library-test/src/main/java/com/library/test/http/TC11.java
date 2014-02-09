@@ -3,6 +3,8 @@ package com.library.test.http;
 import java.io.IOException;
 import java.util.UUID;
 
+import junit.framework.TestCase;
+
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.junit.After;
@@ -13,11 +15,11 @@ import org.xml.sax.SAXException;
 
 import com.library.config.Constant;
 import com.library.config.HibernateUtil;
+import com.library.config.LogConstant;
 import com.library.dao.BookDao;
 import com.library.dao.LoanDao;
 import com.library.dao.UserDao;
 import com.library.model.Book;
-import com.library.model.Loan;
 import com.library.model.Role;
 import com.library.model.User;
 import com.library.service.BookService;
@@ -26,21 +28,15 @@ import com.library.service.UserService;
 import com.meterware.httpunit.GetMethodWebRequest;
 import com.meterware.httpunit.WebConversation;
 import com.meterware.httpunit.WebRequest;
-import com.meterware.httpunit.WebResponse;
 
-public class TC14c {
+public class TC11 extends TestCase{
 
-	private static Logger logger = Logger.getLogger(TC14c.class);
+	private static Logger logger = Logger.getLogger(TC11.class);
 
 	private Session session;
-	private User user;
-
-	private BookService bookService;
-	private LoanService loanService;
-	private UserService userService;
 
 	private String isbn;
-	private String loanID;
+	private String loanId;
 	private String userID;
 	private String bookID;
 
@@ -48,14 +44,22 @@ public class TC14c {
 	private UserDao userDao;
 	private LoanDao loanDao;
 
+	private BookService bookService;
+	private LoanService loanService;
+	private UserService userService;
+	private User user;
+
 	@Before
 	public void setUp() throws Exception {
+		logger.info("Entered setUp");
 		UUID uuid = UUID.randomUUID();
 
 		// add user
 		session = HibernateUtil.getSessionFactory().openSession();
+
 		loanDao = new LoanDao(session);
 		loanService = new LoanService(loanDao);
+
 		userDao = new UserDao(session);
 		userService = new UserService(userDao, loanDao);
 		user = new User("fName" + uuid, "lName" + uuid, "uName" + uuid, "pWord"
@@ -70,40 +74,37 @@ public class TC14c {
 		Book book = new Book("bookname" + uuid, isbn, 10);
 		this.bookID = bookDao.saveOrUpdate(book);
 
-		loanService = new LoanService(loanDao);
 		loanService.addLoan(this.userID, this.bookID);
+		loanId = this.loanService
+				.getLoanByUserIdBookId(this.userID, this.bookID).get(0)
+				.getLoanId();
 
-		Loan loan = loanDao.getLoanByUserIdBookId(userID, bookID).get(0);
-
-		this.loanID = loan.getLoanId();
-
-		logger.info("Exited setUp");
+		logger.info(LogConstant.EXITED);
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		loanService.deleteLoanByLoanID(loanID);
-		bookService.deleteBook(bookID);
-		userService.delete(user);
+		loanService.delete(this.userID, this.bookID);
+		bookService.deleteBook(this.bookID);
+		userService.delete(this.user);
 		session.close();
 	}
 
 	@Test
-	public void testTC14aReturnLoan() throws IOException, SAXException,
-			InterruptedException {
-		logger.info("Entered testTC14aReturnLoan");
-		Thread.sleep(4 * 60 * 1000);
+	public void testRenewExpiredLoan() throws InterruptedException,
+			IOException, SAXException {
+		logger.info("Entered testRenewExpiredLoan");
+
+		Thread.sleep(6 * 60 * 1000);
+
 		WebConversation conversation = new WebConversation();
-		//logger.info(loanID + "   " + userID);
-		WebRequest requestReturnBook = new GetMethodWebRequest(
-				Constant.getReturnBookUrl(loanID, userID));
-		WebResponse responseReturnBook = conversation
-				.getResponse(requestReturnBook);
+		WebRequest requestBookList = new GetMethodWebRequest(
+				Constant.getRenewLoanUrl(this.loanId, this.userID));
+		conversation.getResponse(requestBookList);
 
-		//cannot delete loan until it pays fee
-		Loan loan = this.loanService.getLoanByID(loanID);
-		Assert.assertNotNull(loan);
+		Assert.assertSame(0, this.loanService.getLoanByID(this.loanId)
+				.getRenewalCount());
 
-		logger.info("Exited testTC14aReturnLoan");
+		logger.info("Exited testRenewExpiredLoan");
 	}
 }

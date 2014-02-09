@@ -3,6 +3,8 @@ package com.library.test.http;
 import java.io.IOException;
 import java.util.UUID;
 
+import junit.framework.TestCase;
+
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.junit.After;
@@ -28,7 +30,7 @@ import com.meterware.httpunit.GetMethodWebRequest;
 import com.meterware.httpunit.WebConversation;
 import com.meterware.httpunit.WebRequest;
 
-public class TC12 {
+public class TC12 extends TestCase{
 
 	private static Logger logger = Logger.getLogger(TC12.class);
 

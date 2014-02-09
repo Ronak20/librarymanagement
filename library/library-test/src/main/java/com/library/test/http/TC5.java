@@ -1,9 +1,9 @@
 package com.library.test.http;
 
-import static org.junit.Assert.assertEquals;
-
 import java.util.Arrays;
 import java.util.Collection;
+
+import junit.framework.TestCase;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
@@ -30,7 +30,7 @@ import com.meterware.httpunit.WebResponse;
 import com.meterware.httpunit.WebTable;
 
 @RunWith(Parameterized.class)
-public class TC5 {
+public class TC5 extends TestCase {
 	private static Logger logger = Logger.getLogger(TC5.class);
 	private String isbn;
 	private String bookName = "Mybook" + System.currentTimeMillis();
@@ -64,19 +64,19 @@ public class TC5 {
 	@After
 	public void tearDown() throws Exception {
 		logger.info("Entered tearDown of TC5 Add copies of a book");
-		//delete the user created 
+		// delete the user created
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		BookDao bookDao = new BookDao(session);
-		logger.info("trying to delete the book with ISBN: "+isbn+"");
+		logger.info("trying to delete the book with ISBN: " + isbn + "");
 		Book book = bookDao.getBookByName(bookName);
 		try {
-				bookDao.deleteBook(book);
-				
-			} catch (Exception GenericException) {
-				
-				logger.error(GenericException.getMessage(), GenericException);
-			}
-		
+			bookDao.deleteBook(book);
+
+		} catch (Exception GenericException) {
+
+			logger.error(GenericException.getMessage(), GenericException);
+		}
+
 		session.close();
 		logger.info("Exited teadDown of TC5 Add copies of a book");
 
@@ -90,14 +90,15 @@ public class TC5 {
 		WebResponse responseAdd = conversation.getResponse(requestAdd);
 		WebForm addBookForm = responseAdd.getFormWithID("addBookForm");
 		logger.debug("Add Book Form : \n" + responseAdd.getText());
-		addBookForm.setParameter("bookname",
-				bookName);
+		addBookForm.setParameter("bookname", bookName);
 		addBookForm.setParameter("copies",
 				"" + (int) (System.currentTimeMillis()));
 		addBookForm.setParameter("isbn", isbn);
-		/*SubmitButton addBookSubmitButton = addBookForm
-				.getSubmitButton("addBookSubmit");
-		addBookForm.submit(addBookSubmitButton);*/
+		/*
+		 * SubmitButton addBookSubmitButton = addBookForm
+		 * .getSubmitButton("addBookSubmit");
+		 * addBookForm.submit(addBookSubmitButton);
+		 */
 		addBookForm.submit();
 
 		logger.info("One book added");

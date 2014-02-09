@@ -5,6 +5,8 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
+import junit.framework.TestCase;
+
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.junit.After;
@@ -25,17 +27,22 @@ import com.library.model.User;
 import com.library.service.BookService;
 import com.library.service.LoanService;
 import com.library.servlet.PayFeesServlet;
+import com.library.servlet.RentBookServlet;
 import com.meterware.httpunit.GetMethodWebRequest;
+import com.meterware.httpunit.SubmitButton;
+import com.meterware.httpunit.TableCell;
 import com.meterware.httpunit.WebConversation;
+import com.meterware.httpunit.WebForm;
 import com.meterware.httpunit.WebRequest;
 import com.meterware.httpunit.WebResponse;
+import com.meterware.httpunit.WebTable;
 import com.meterware.servletunit.InvocationContext;
 import com.meterware.servletunit.ServletRunner;
 import com.meterware.servletunit.ServletUnitClient;
 
-public class TC20 {
+public class TC19 extends TestCase{
 
-	private static Logger logger = Logger.getLogger(TC20.class);
+	private static Logger logger = Logger.getLogger(TC19.class);
 
 	private Session session;
 	private LoanService loanService;
@@ -68,46 +75,44 @@ public class TC20 {
 		Book book = new Book("bookname" + uuid, isbn, 10);
 		this.bookID = bookDao.saveOrUpdate(book);
 
-		// rewnwing loan
+		//create loan
 		loanDao = new LoanDao(session);
 		loanService = new LoanService(loanDao);
 		loanService.addLoan(this.userID, this.bookID);
-		this.loanID = loanDao.getLoanByUserIdBookId(userID, bookID).get(0)
-				.getLoanId();
+		loanID = this.loanDao.getLoanByUserIdBookId(userID, bookID).get(0).getLoanId(); 
 		bookService.decreaseCopies(this.bookID);
-		loanService.renewLoan(loanID);
+
+		
 		logger.info("Exited setUp");
 	}
 
 	@After
 	public void tearDown() throws Exception {
+		loanDao.deleteById(loanID);
+		userDao.delete(userDao.getUserById(userID));
+		bookDao.deleteBook(bookDao.getBookByID(bookID));
+		
+		
 		session.close();
 	}
-
+	
 	@Test
-	public void testTC20PayFineAfterRenewal() throws InterruptedException,
-	IOException, SAXException {
+	public void testTC19PayFine() throws InterruptedException, IOException, SAXException
+	{
+			    
 		logger.info("Entered testTC19PayFine");
-		// Thread.sleep(4*60*1000);
-		logger.info(" loanID : " + loanID + " bookID : " + bookID
-				+ " userID : " + userID);
+		logger.info(" loanID : "+loanID+" bookID : "+bookID+" userID : "+userID);
+		Thread.sleep(6 * 60 * 1000);
 		WebConversation conversation = new WebConversation();
-		WebRequest requestLoanRenewal = new GetMethodWebRequest(
-				Constant.getRenewLoanUrl(loanID, userID));
-		// renew the loan
-		conversation.getResponse(requestLoanRenewal);
-		// let the loan expire
-		Thread.sleep(4 * 60 * 1000);
-		// pay the late fee
 		WebRequest requestPayFine = new GetMethodWebRequest(
-				Constant.getPayFeeUrl(loanID, userID));
+				Constant.getPayFeeUrl(loanID,userID ));
 		conversation.getResponse(requestPayFine);
 		Loan loan = loanDao.getLoanByUserIdBookId(userID, bookID).get(0);
 		logger.debug(loan);
-		logger.info("loanID:" + loan.getLoanId() + "has latfee: "
-				+ loan.getLateFee() + "");
+		
 		Assert.assertTrue(loan.getIsLateFeePaid());
-		Assert.assertEquals(0, loan.getLateFee());
+		Assert.assertEquals(0,loan.getLateFee());
+		
 		logger.info("Exited testTC19PayFine");
 	}
 

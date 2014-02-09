@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
+import junit.framework.TestCase;
+
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.junit.After;
@@ -28,7 +30,7 @@ import com.library.service.UserService;
 import com.meterware.httpunit.WebConversation;
 import com.meterware.httpunit.WebResponse;
 
-public class TC7 {
+public class TC7 extends TestCase{
 
 	private static Logger logger = Logger.getLogger(TC7.class);
 

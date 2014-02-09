@@ -3,6 +3,8 @@ package com.library.test.http;
 import java.io.IOException;
 import java.util.UUID;
 
+import junit.framework.TestCase;
+
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.junit.After;
@@ -28,9 +30,9 @@ import com.meterware.httpunit.WebConversation;
 import com.meterware.httpunit.WebRequest;
 import com.meterware.httpunit.WebResponse;
 
-public class TC14a {
+public class TC14c extends TestCase{
 
-	private static Logger logger = Logger.getLogger(TC14a.class);
+	private static Logger logger = Logger.getLogger(TC14c.class);
 
 	private Session session;
 	private User user;
@@ -76,7 +78,7 @@ public class TC14a {
 		Loan loan = loanDao.getLoanByUserIdBookId(userID, bookID).get(0);
 
 		this.loanID = loan.getLoanId();
-		
+
 		logger.info("Exited setUp");
 	}
 
@@ -92,17 +94,18 @@ public class TC14a {
 	public void testTC14aReturnLoan() throws IOException, SAXException,
 			InterruptedException {
 		logger.info("Entered testTC14aReturnLoan");
-		//Thread.sleep(4 * 60 * 1000);
+		Thread.sleep(4 * 60 * 1000);
 		WebConversation conversation = new WebConversation();
-		logger.info(loanID+"   "+userID);
+		//logger.info(loanID + "   " + userID);
 		WebRequest requestReturnBook = new GetMethodWebRequest(
 				Constant.getReturnBookUrl(loanID, userID));
 		WebResponse responseReturnBook = conversation
 				.getResponse(requestReturnBook);
 
+		//cannot delete loan until it pays fee
 		Loan loan = this.loanService.getLoanByID(loanID);
-		Assert.assertNull(loan);
-		
+		Assert.assertNotNull(loan);
+
 		logger.info("Exited testTC14aReturnLoan");
 	}
 }
