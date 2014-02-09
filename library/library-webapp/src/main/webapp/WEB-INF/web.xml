@@ -4,10 +4,6 @@
 
 <web-app>
 
-	<listener>
-		<listener-class>com.library.job.TomcatQuartzInitializerListener</listener-class>
-	</listener>
-
 	<display-name>Library Management Web Application</display-name>
 	<servlet>
 		<servlet-name>UserServlet</servlet-name>
@@ -191,6 +187,8 @@
 		<welcome-file>jsp/login.jsp</welcome-file>
 	</welcome-file-list>
 
-
+	<listener>
+		<listener-class>com.library.job.TomcatQuartzInitializerListener</listener-class>
+	</listener>
 
 </web-app>
