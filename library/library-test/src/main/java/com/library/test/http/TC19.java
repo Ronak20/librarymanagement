@@ -3,16 +3,11 @@ package com.library.test.http;
 import java.io.IOException;
 import java.util.UUID;
 
-import javax.servlet.http.HttpSession;
-
+import junit.framework.Assert;
 import junit.framework.TestCase;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 import org.xml.sax.SAXException;
 
 import com.library.config.Constant;
@@ -26,19 +21,9 @@ import com.library.model.Role;
 import com.library.model.User;
 import com.library.service.BookService;
 import com.library.service.LoanService;
-import com.library.servlet.PayFeesServlet;
-import com.library.servlet.RentBookServlet;
 import com.meterware.httpunit.GetMethodWebRequest;
-import com.meterware.httpunit.SubmitButton;
-import com.meterware.httpunit.TableCell;
 import com.meterware.httpunit.WebConversation;
-import com.meterware.httpunit.WebForm;
 import com.meterware.httpunit.WebRequest;
-import com.meterware.httpunit.WebResponse;
-import com.meterware.httpunit.WebTable;
-import com.meterware.servletunit.InvocationContext;
-import com.meterware.servletunit.ServletRunner;
-import com.meterware.servletunit.ServletUnitClient;
 
 public class TC19 extends TestCase{
 
@@ -54,8 +39,12 @@ public class TC19 extends TestCase{
 	private UserDao userDao;
 	private BookService bookService;
 	private LoanDao loanDao;
+	
+	public TC19(String s)
+	{
+		super(s);
+	}
 
-	@Before
 	public void setUp() throws Exception {
 		logger.info("Entered setUp");
 		UUID uuid = UUID.randomUUID();
@@ -86,17 +75,14 @@ public class TC19 extends TestCase{
 		logger.info("Exited setUp");
 	}
 
-	@After
 	public void tearDown() throws Exception {
 		loanDao.deleteById(loanID);
 		userDao.delete(userDao.getUserById(userID));
 		bookDao.deleteBook(bookDao.getBookByID(bookID));
-		
-		
 		session.close();
 	}
 	
-	@Test
+	 
 	public void testTC19PayFine() throws InterruptedException, IOException, SAXException
 	{
 			    

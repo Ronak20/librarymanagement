@@ -1,25 +1,15 @@
 package com.library.test.http;
 
-import java.util.Arrays;
-import java.util.Collection;
-
 import junit.framework.TestCase;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
 
 import com.library.config.Constant;
 import com.library.config.HibernateUtil;
 import com.library.dao.BookDao;
 import com.library.model.Book;
 import com.meterware.httpunit.GetMethodWebRequest;
-import com.meterware.httpunit.HttpUnitOptions;
 import com.meterware.httpunit.SubmitButton;
 import com.meterware.httpunit.TableCell;
 import com.meterware.httpunit.WebConversation;
@@ -29,39 +19,16 @@ import com.meterware.httpunit.WebRequest;
 import com.meterware.httpunit.WebResponse;
 import com.meterware.httpunit.WebTable;
 
-@RunWith(Parameterized.class)
 public class TC5 extends TestCase {
 	private static Logger logger = Logger.getLogger(TC5.class);
-	private String isbn;
+	private String isbn = "testisbn" + (int) (System.currentTimeMillis());
 	private String bookName = "Mybook" + System.currentTimeMillis();
 
-	public TC5(String isbn) {
-		this.isbn = isbn;
-	}
-
-	@Parameters
-	public static Collection primeNumbers() {
-		return Arrays.asList(new Object[][] { { "testisbn1"
-				+ (int) (System.currentTimeMillis()) } });
-	}
-
-	@Before
 	public void setUp() throws Exception {
 		logger.info("Entered setUp of TC5 Add copies of a book");
-		WebConversation conversation = new WebConversation();
-		WebRequest request = new GetMethodWebRequest(Constant.ROOT_URL);
-		HttpUnitOptions.setScriptingEnabled(false);
-		WebResponse response = conversation.getResponse(request);
-		logger.debug("Login Page : \n" + response.getText());
-		WebForm loginForm = response.getFormWithID("loginForm");
-		loginForm.setParameter("username", Constant.ADMIN_USERNAME);
-		loginForm.setParameter("password", Constant.ADMIN_PASSWORD);
-		SubmitButton submitButton = loginForm.getSubmitButton("loginSubmit");
-		loginForm.submit(submitButton);
 		logger.info("Exited setUp of TC5 Add copies of a book");
 	}
 
-	@After
 	public void tearDown() throws Exception {
 		logger.info("Entered tearDown of TC5 Add copies of a book");
 		// delete the user created
@@ -69,20 +36,11 @@ public class TC5 extends TestCase {
 		BookDao bookDao = new BookDao(session);
 		logger.info("trying to delete the book with ISBN: " + isbn + "");
 		Book book = bookDao.getBookByName(bookName);
-		try {
-			bookDao.deleteBook(book);
-
-		} catch (Exception GenericException) {
-
-			logger.error(GenericException.getMessage(), GenericException);
-		}
-
-		session.close();
-		logger.info("Exited teadDown of TC5 Add copies of a book");
+		bookDao.deleteBook(book);
+		logger.info("Exited tearDown of TC5 Add copies of a book");
 
 	}
 
-	@Test
 	public void testTC5AddCopiesOfTwoTitle() throws Exception {
 		logger.info("Entered TC5 Add copies of a book");
 		WebConversation conversation = new WebConversation();
@@ -94,11 +52,6 @@ public class TC5 extends TestCase {
 		addBookForm.setParameter("copies",
 				"" + (int) (System.currentTimeMillis()));
 		addBookForm.setParameter("isbn", isbn);
-		/*
-		 * SubmitButton addBookSubmitButton = addBookForm
-		 * .getSubmitButton("addBookSubmit");
-		 * addBookForm.submit(addBookSubmitButton);
-		 */
 		addBookForm.submit();
 
 		logger.info("One book added");

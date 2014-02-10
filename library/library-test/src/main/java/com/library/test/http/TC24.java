@@ -1,16 +1,9 @@
 package com.library.test.http;
 
-import java.util.Arrays;
-import java.util.Collection;
-
+import junit.framework.Assert;
 import junit.framework.TestCase;
 
 import org.apache.log4j.Logger;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runners.Parameterized.Parameters;
 
 import com.library.config.Constant;
 import com.meterware.httpunit.GetMethodWebRequest;
@@ -21,32 +14,19 @@ import com.meterware.httpunit.WebRequest;
 import com.meterware.httpunit.WebResponse;
 import com.meterware.httpunit.WebTable;
 
-public class TC24 extends TestCase{
+public class TC24 extends TestCase {
 	private static Logger logger = Logger.getLogger(TC24.class);
-	
-	public TC24(String s) {
-		super(s);
-	}
 
-	@Parameters
-	public static Collection primeNumbers() {
-		return Arrays.asList(new Object[][] { { "testisbn1"
-				+ (int) (System.currentTimeMillis()) } });
-	}
-
-	@Before
 	public void setUp() throws Exception {
 		logger.info("Entered setUp");
-		
+
 		logger.info("Exited setUp");
 	}
 
-	@After
 	public void tearDown() throws Exception {
-		
+
 	}
 
-	@Test
 	public void testTC24RemoveTitle() throws Exception {
 		logger.info("Entered testTC24RemoveTitle");
 		WebConversation conversation = new WebConversation();
@@ -59,11 +39,6 @@ public class TC24 extends TestCase{
 				"" + (int) (System.currentTimeMillis()));
 		String isbn = "testisbn" + (int) (System.currentTimeMillis());
 		addBookForm.setParameter("isbn", isbn);
-		/*
-		 * SubmitButton addBookSubmitButton = addBookForm
-		 * .getSubmitButton("addBookSubmit");
-		 * addBookForm.submit(addBookSubmitButton);
-		 */
 		addBookForm.submit();
 
 		logger.info("One book added");
@@ -85,7 +60,7 @@ public class TC24 extends TestCase{
 		// checking whether book is deleted or not
 		logger.info("checking deleted book");
 		WebRequest requestGetBook = new GetMethodWebRequest(
-				Constant.BOOK_DELETE_URL+bookidDelete);
+				Constant.BOOK_DELETE_URL + bookidDelete);
 		WebResponse responseGetBook = conversation.getResponse(requestGetBook);
 		WebTable bookListUpdatedTable = responseGetBook
 				.getTableWithID("bookListTable");

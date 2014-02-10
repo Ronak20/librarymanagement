@@ -4,14 +4,11 @@ import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
+import junit.framework.Assert;
 import junit.framework.TestCase;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 import org.xml.sax.SAXException;
 
 import com.library.config.Constant;
@@ -28,9 +25,8 @@ import com.library.service.BookService;
 import com.library.service.LoanService;
 import com.library.service.UserService;
 import com.meterware.httpunit.WebConversation;
-import com.meterware.httpunit.WebResponse;
 
-public class TC7 extends TestCase{
+public class TC7 extends TestCase {
 
 	private static Logger logger = Logger.getLogger(TC7.class);
 
@@ -50,7 +46,10 @@ public class TC7 extends TestCase{
 	private UserService userService;
 	private User user;
 
-	@Before
+	public TC7(String s) {
+		super(s);
+	}
+
 	public void setUp() throws Exception {
 		logger.info("Entered setUp");
 		UUID uuid = UUID.randomUUID();
@@ -88,7 +87,6 @@ public class TC7 extends TestCase{
 		logger.info(LogConstant.EXITED);
 	}
 
-	@After
 	public void tearDown() throws Exception {
 		loanService.delete(this.userID, this.bookID);
 		loanService.delete(this.userID, this.bookID2);
@@ -100,19 +98,15 @@ public class TC7 extends TestCase{
 		session.close();
 	}
 
-	@Test
 	public void testBorrowMultipleCopies() throws InterruptedException,
 			IOException, SAXException {
 		logger.info("Entered testBorrowMultipleCopies");
 		logger.info("bookID : " + bookID + " userID : " + userID);
 
 		WebConversation conversation = new WebConversation();
-		WebResponse response = conversation.getResponse(Constant
-				.getRentBookUrl(bookID, userID));
-		WebResponse response2 = conversation.getResponse(Constant
-				.getRentBookUrl(bookID2, userID));
-		WebResponse response3 = conversation.getResponse(Constant
-				.getRentBookUrl(bookID3, userID));
+		conversation.getResponse(Constant.getRentBookUrl(bookID, userID));
+		conversation.getResponse(Constant.getRentBookUrl(bookID2, userID));
+		conversation.getResponse(Constant.getRentBookUrl(bookID3, userID));
 
 		List<Loan> loanList = loanDao.getLoanByUserIdBookId(userID, bookID);
 		logger.debug(loanList);

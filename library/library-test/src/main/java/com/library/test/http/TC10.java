@@ -2,11 +2,11 @@ package com.library.test.http;
 
 import java.util.UUID;
 
+import junit.framework.Assert;
 import junit.framework.TestCase;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
-import org.junit.Assert;
 
 import com.library.config.Constant;
 import com.library.config.HibernateUtil;
@@ -90,8 +90,9 @@ public class TC10 extends TestCase {
 		WebRequest requestBookList = new GetMethodWebRequest(
 				Constant.getRenewLoanUrl(this.loanId, this.userId));
 		conversation.getResponse(requestBookList);
-		session.refresh(this.loanDao.getLoanByID(this.loanId));	
-		Assert.assertEquals(1, this.loanDao.getLoanByID(this.loanId).getRenewalCount());
+		session.refresh(this.loanDao.getLoanByID(this.loanId));
+		Assert.assertEquals(1, this.loanDao.getLoanByID(this.loanId)
+				.getRenewalCount());
 
 		logger.info("Exited testRenewBook");
 	}

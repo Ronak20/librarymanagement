@@ -109,7 +109,7 @@ public class TC7UserBorrowItemTest extends TestCase {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		LoanDao loanDao = new LoanDao(session);
 		LoanService ls = new LoanService(loanDao);
-		Loan ln = new Loan(requestBookList.getParameter("auser"),
+		new Loan(requestBookList.getParameter("auser"),
 				requestBookList.getParameter("bookid"));
 		ls.addLoan(requestBookList.getParameter("auser"),
 				requestBookList.getParameter("bookid"));
@@ -121,12 +121,10 @@ public class TC7UserBorrowItemTest extends TestCase {
 
 		assertEquals("Testing if book was added", expectedBid,
 				responseBookList.getTableWithID("82"));
-				//responseBookList.getTableWithID("rentedBooks")
-				//.getCellAsText(1,1));
-						
-				
-				
-						//.getID());
+		// responseBookList.getTableWithID("rentedBooks")
+		// .getCellAsText(1,1));
+
+		// .getID());
 		logger.info("Getting Row Count"
 				+ " = "
 				+ userRentedBooksTable.getTableCellWithID(requestBookList

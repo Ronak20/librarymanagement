@@ -6,8 +6,6 @@ import junit.framework.TestCase;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
-import org.junit.After;
-import org.junit.Before;
 
 import com.library.config.Constant;
 import com.library.config.HibernateUtil;
@@ -47,7 +45,6 @@ public class TC25a extends TestCase {
 		super(s);
 	}
 
-	@Before
 	public void setUp() throws Exception {
 		logger.info("Entered setUp for TC 25a Delete book with multiple copies");
 		session = HibernateUtil.getSessionFactory().openSession();
@@ -60,7 +57,6 @@ public class TC25a extends TestCase {
 		logger.info("Exit setUp for TC 25a Delete book with multiple copies");
 	}
 
-	@After
 	public void tearDown() throws Exception {
 		// Delete the loan
 		logger.info("Entered tear down for TC25a");
@@ -77,6 +73,7 @@ public class TC25a extends TestCase {
 		logger.info("Exit tear down for TC25a");
 	}
 
+	 
 	public void testDeleteBookWithMultipleCopies() throws Exception {
 		logger.info("Entered TC25a ");
 		User user;

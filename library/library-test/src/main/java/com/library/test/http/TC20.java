@@ -3,14 +3,11 @@ package com.library.test.http;
 import java.io.IOException;
 import java.util.UUID;
 
+import junit.framework.Assert;
 import junit.framework.TestCase;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 import org.xml.sax.SAXException;
 
 import com.library.config.Constant;
@@ -43,7 +40,10 @@ public class TC20 extends TestCase {
 	private BookService bookService;
 	private LoanDao loanDao;
 
-	@Before
+	public TC20(String s) {
+		super(s);
+	}
+
 	public void setUp() throws Exception {
 		logger.info("Entered setUp");
 		UUID uuid = UUID.randomUUID();
@@ -74,12 +74,10 @@ public class TC20 extends TestCase {
 		logger.info("Exited setUp");
 	}
 
-	@After
 	public void tearDown() throws Exception {
 		session.close();
 	}
 
-	@Test
 	public void testTC20PayFineAfterRenewal() throws InterruptedException,
 			IOException, SAXException {
 		logger.info("Entered testTC19PayFine");

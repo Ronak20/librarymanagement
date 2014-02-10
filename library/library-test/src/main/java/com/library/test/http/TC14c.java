@@ -3,14 +3,11 @@ package com.library.test.http;
 import java.io.IOException;
 import java.util.UUID;
 
+import junit.framework.Assert;
 import junit.framework.TestCase;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 import org.xml.sax.SAXException;
 
 import com.library.config.Constant;
@@ -28,9 +25,8 @@ import com.library.service.UserService;
 import com.meterware.httpunit.GetMethodWebRequest;
 import com.meterware.httpunit.WebConversation;
 import com.meterware.httpunit.WebRequest;
-import com.meterware.httpunit.WebResponse;
 
-public class TC14c extends TestCase{
+public class TC14c extends TestCase {
 
 	private static Logger logger = Logger.getLogger(TC14c.class);
 
@@ -50,7 +46,10 @@ public class TC14c extends TestCase{
 	private UserDao userDao;
 	private LoanDao loanDao;
 
-	@Before
+	public TC14c(String s) {
+		super(s);
+	}
+
 	public void setUp() throws Exception {
 		UUID uuid = UUID.randomUUID();
 
@@ -82,7 +81,6 @@ public class TC14c extends TestCase{
 		logger.info("Exited setUp");
 	}
 
-	@After
 	public void tearDown() throws Exception {
 		loanService.deleteLoanByLoanID(loanID);
 		bookService.deleteBook(bookID);
@@ -90,19 +88,17 @@ public class TC14c extends TestCase{
 		session.close();
 	}
 
-	@Test
 	public void testTC14aReturnLoan() throws IOException, SAXException,
 			InterruptedException {
 		logger.info("Entered testTC14aReturnLoan");
 		Thread.sleep(4 * 60 * 1000);
 		WebConversation conversation = new WebConversation();
-		//logger.info(loanID + "   " + userID);
+		// logger.info(loanID + "   " + userID);
 		WebRequest requestReturnBook = new GetMethodWebRequest(
 				Constant.getReturnBookUrl(loanID, userID));
-		WebResponse responseReturnBook = conversation
-				.getResponse(requestReturnBook);
+		conversation.getResponse(requestReturnBook);
 
-		//cannot delete loan until it pays fee
+		// cannot delete loan until it pays fee
 		Loan loan = this.loanService.getLoanByID(loanID);
 		Assert.assertNotNull(loan);
 

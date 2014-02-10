@@ -6,7 +6,6 @@ import junit.framework.TestCase;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
-import org.junit.After;
 
 import com.library.config.Constant;
 import com.library.config.HibernateUtil;
@@ -20,7 +19,6 @@ import com.library.service.BookService;
 import com.library.service.LoanService;
 import com.library.service.UserService;
 import com.meterware.httpunit.GetMethodWebRequest;
-import com.meterware.httpunit.WebConversation;
 import com.meterware.httpunit.WebRequest;
 
 public class TC9ThreeUsersBorrowSameItemTest extends TestCase {
@@ -63,12 +61,12 @@ public class TC9ThreeUsersBorrowSameItemTest extends TestCase {
 
 		Session session = HibernateUtil.getSessionFactory().openSession();
 
-		User user1 = new User("fName" + uuid1, "lName" + uuid1,
+		new User("fName" + uuid1, "lName" + uuid1,
 				"uName" + uuid1, "pWord" + uuid1, Role.STUDENT);
 
-		User user2 = new User("fName" + uuid2, "lName" + uuid2,
+		new User("fName" + uuid2, "lName" + uuid2,
 				"uName" + uuid2, "pWord" + uuid2, Role.STUDENT);
-		User user3 = new User("fName" + uuid3, "lName" + uuid3,
+		new User("fName" + uuid3, "lName" + uuid3,
 				"uName" + uuid3, "pWord" + uuid3, Role.STUDENT);
 
 		// add book
@@ -108,31 +106,9 @@ public class TC9ThreeUsersBorrowSameItemTest extends TestCase {
 		loanID3 = this.loanDao.getLoanByUserIdBookId(uId3, bookID).get(0)
 				.getLoanId();
 		bookService.decreaseCopies(this.bookID);
-
-		/*
-		 * WebConversation conversation = new WebConversation(); WebRequest
-		 * request = new GetMethodWebRequest(Constant.ROOT_URL); WebResponse
-		 * response = conversation.getResponse(request);
-		 * logger.debug("Login Page : \n" + response.getText()); WebForm
-		 * loginForm = response.getFormWithID("loginForm");
-		 * loginForm.setParameter("username", Constant.ADMIN_USERNAME);
-		 * loginForm.setParameter("password", Constant.ADMIN_PASSWORD);
-		 * SubmitButton submitButton = loginForm.getSubmitButton("loginSubmit");
-		 * loginForm.submit(submitButton); logger.info("Exited setUp");
-		 */
 	}
 
-	@After
 	public void tearDown() throws Exception {
-
-		/*
-		 * userDao.delete(userDao.getUserByName("uName" + uuid3));
-		 * userDao.delete
-		 * (userDao.getUserById((loanDao.getLoanByID(loanID2).getUserId())));
-		 * userDao
-		 * .delete(userDao.getUserById((loanDao.getLoanByID(loanID3).getUserId
-		 * ())));
-		 */
 
 		loanDao.delete(loanDao.getLoanByID(loanID1));
 		loanDao.delete(loanDao.getLoanByID(loanID2));
@@ -142,43 +118,9 @@ public class TC9ThreeUsersBorrowSameItemTest extends TestCase {
 
 	}
 
-	/*
-	 * public void testRentBookListBooks() throws Exception {
-	 * logger.info("Entering testRentBookListBooks"); WebConversation
-	 * conversation = new WebConversation(); // WebRequest request = new //
-	 * GetMethodWebRequest(Constant.USERBOOKS_GET_URL); // WebResponse response
-	 * = conversation.getResponse(request);
-	 * 
-	 * Session session = HibernateUtil.getSessionFactory().openSession();
-	 * BookDao bookDao = new BookDao(session);
-	 * 
-	 * WebRequest requestBookList = new GetMethodWebRequest(
-	 * Constant.USERBOOKS_GET_URL); WebResponse responseBookList = conversation
-	 * .getResponse(requestBookList); WebTable userBookListTable =
-	 * responseBookList .getTableWithID("userBookListTable"); // TableCell
-	 * tableCell = userBookListTable.getTableCellWithID("isbn" + // ""); /*
-	 * Testing number of books for user panel when clicked "RentBook" FIXME :
-	 * change '6' to the actualy number of books you have in your database
-	 * 
-	 * 
-	 * requestBookList.setParameter("currentUser", "20");
-	 * 
-	 * assertEquals("coloumn count", bookDao.getAll().size(),
-	 * userBookListTable.getRowCount() - 1); logger.info("Getting Row Count" +
-	 * " = " + userBookListTable.getRowCount());
-	 * logger.info("Exited testRentBook");
-	 * 
-	 * }
-	 */
-
 	public void testRentBookResult() throws Exception {
 		logger.info("Entered testTC3AddTitle");
-		WebConversation conversation = new WebConversation();
-		// WebRequest request = new GetMethodWebRequest(Constant.RENT_BOOK_URL);
-		// WebResponse response = conversation.getResponse(request);
-
-		// request.setParameter("currentUser", "20");
-		;
+		
 
 		WebRequest requestBookList = new GetMethodWebRequest(
 				Constant.RENT_BOOK_URL);
@@ -189,31 +131,16 @@ public class TC9ThreeUsersBorrowSameItemTest extends TestCase {
 
 		requestBookList.setParameter("auser", expectedUid);
 		requestBookList.setParameter("bookid", expectedBid);
-		// WebResponse responseBookList = conversation
-		// .getResponse(requestBookList);
-		// WebTable userRentedBooksTable = responseBookList
-		// .getTableWithID("rentedBooks");
-
-		// TableCell tableCell = userBookListTable.getTableCellWithID("isbn" +
-		// "");
-		/*
-		 * Testing whether the book was added and shown on the user panel FIXME
-		 * :
-		 */
+		
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		LoanDao loanDao = new LoanDao(session);
-		LoanService ls = new LoanService(loanDao);
-
-		// TableCell tc = userRentedBooksTable.getAttribute(name)
-
-		// System.out.println(aRow);
+		
 
 		// first Assertion
 		assertEquals("Testing U1 burrowed", expectedUid, loanDao
 				.getLoanByUserIdBookId(expectedUid, expectedBid).get(0)
 				.getUserId());
-		// responseBookList.getTableWithID("rentedBooks")
-		// .getCellAsText(1,1));
+		
 
 		// second Assertion
 
@@ -224,9 +151,7 @@ public class TC9ThreeUsersBorrowSameItemTest extends TestCase {
 		assertEquals("Testing U2 Borrowed", expectedUid, loanDao
 				.getLoanByUserIdBookId(expectedUid, expectedBid).get(0)
 				.getUserId());
-		// responseBookList.getTableWithID("rentedBooks")
-		// .getCellAsText(1,1));
-
+		
 		// third Assertion
 
 		expectedUid = uId3;
@@ -237,7 +162,6 @@ public class TC9ThreeUsersBorrowSameItemTest extends TestCase {
 				.getLoanByUserIdBookId(expectedUid, expectedBid).get(0)
 				.getUserId());
 
-		// .getID());
 
 		loanDao.delete(expectedUid, expectedUid);
 

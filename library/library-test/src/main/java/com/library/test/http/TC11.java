@@ -3,14 +3,11 @@ package com.library.test.http;
 import java.io.IOException;
 import java.util.UUID;
 
+import junit.framework.Assert;
 import junit.framework.TestCase;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 import org.xml.sax.SAXException;
 
 import com.library.config.Constant;
@@ -29,7 +26,7 @@ import com.meterware.httpunit.GetMethodWebRequest;
 import com.meterware.httpunit.WebConversation;
 import com.meterware.httpunit.WebRequest;
 
-public class TC11 extends TestCase{
+public class TC11 extends TestCase {
 
 	private static Logger logger = Logger.getLogger(TC11.class);
 
@@ -49,7 +46,6 @@ public class TC11 extends TestCase{
 	private UserService userService;
 	private User user;
 
-	@Before
 	public void setUp() throws Exception {
 		logger.info("Entered setUp");
 		UUID uuid = UUID.randomUUID();
@@ -82,7 +78,6 @@ public class TC11 extends TestCase{
 		logger.info(LogConstant.EXITED);
 	}
 
-	@After
 	public void tearDown() throws Exception {
 		loanService.delete(this.userID, this.bookID);
 		bookService.deleteBook(this.bookID);
@@ -90,7 +85,6 @@ public class TC11 extends TestCase{
 		session.close();
 	}
 
-	@Test
 	public void testRenewExpiredLoan() throws InterruptedException,
 			IOException, SAXException {
 		logger.info("Entered testRenewExpiredLoan");

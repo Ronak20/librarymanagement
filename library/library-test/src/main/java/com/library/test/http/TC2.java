@@ -4,9 +4,6 @@ import junit.framework.TestCase;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 
 import com.library.config.Constant;
 import com.library.config.HibernateUtil;
@@ -22,14 +19,17 @@ import com.meterware.httpunit.WebRequest;
 import com.meterware.httpunit.WebResponse;
 import com.meterware.httpunit.WebTable;
 
-import org.junit.Test;
-
 public class TC2 extends TestCase {
 	private static Logger logger = Logger.getLogger(TC2.class);
-	public String parameterFirstUserName = "MyFirstUser" + System.currentTimeMillis();
-	public String parameterSecondUserName = "MySecondUser" + System.currentTimeMillis();
+	public String parameterFirstUserName = "MyFirstUser"
+			+ System.currentTimeMillis();
+	public String parameterSecondUserName = "MySecondUser"
+			+ System.currentTimeMillis();
 
-	@Before
+	public TC2(String s) {
+		super(s);
+	}
+
 	public void setUp() throws Exception {
 		logger.info("Entered setUp for TC2");
 		WebConversation conversation = new WebConversation();
@@ -45,28 +45,28 @@ public class TC2 extends TestCase {
 		logger.info("Exited setUp for TC2");
 	}
 
-	@After
 	public void tearDown() throws Exception {
 		logger.info("Entered tearDown of TC2");
-		//delete the user created 
+		// delete the user created
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		UserDao userDao = new UserDao(session);
-		logger.info("trying to delete the user with UserName: "+parameterFirstUserName+", "+parameterSecondUserName);
+		logger.info("trying to delete the user with UserName: "
+				+ parameterFirstUserName + ", " + parameterSecondUserName);
 		User user1 = userDao.getUserByName(parameterFirstUserName);
 		User user2 = userDao.getUserByName(parameterSecondUserName);
 		try {
-				userDao.delete(user1);
-				userDao.delete(user2);
-				
-			} catch (Exception GenericException) {
-				
-				logger.error(GenericException.getMessage(), GenericException);
-			}
-		
+			userDao.delete(user1);
+			userDao.delete(user2);
+
+		} catch (Exception GenericException) {
+
+			logger.error(GenericException.getMessage(), GenericException);
+		}
+
 		session.close();
 		logger.info("Exited teadDown of TC2");
 	}
-	
+
 	public void testCreatetwoUsers() throws Exception {
 		System.out.println("Entered testTC2AddTwoUsers");
 		WebConversation conversation = new WebConversation();
@@ -74,49 +74,43 @@ public class TC2 extends TestCase {
 		WebResponse response = conversation.getResponse(request);
 		WebForm createUserForm = response.getFormWithID("createUserForm");
 		logger.debug("Create User Form : \n" + response.getText());
-		
-		createUserForm.setParameter("username",
-				parameterFirstUserName);
-		createUserForm.setParameter("firstname",
-				"TestFirstName" );
-		createUserForm.setParameter("lastname",
-				"TestLastName" );
-		createUserForm.setParameter("password",
-				"password" );
-		createUserForm.setParameter("role",
-				"Student" );
+
+		createUserForm.setParameter("username", parameterFirstUserName);
+		createUserForm.setParameter("firstname", "TestFirstName");
+		createUserForm.setParameter("lastname", "TestLastName");
+		createUserForm.setParameter("password", "password");
+		createUserForm.setParameter("role", "Student");
 		SubmitButton createUserSubmitButton = createUserForm
 				.getSubmitButton("submitbutton");
 		createUserForm.submit(createUserSubmitButton);
-		
-		WebRequest requestUserList = new GetMethodWebRequest(Constant.USER_GET_URL);
-		WebResponse responseUserList = conversation.getResponse(requestUserList);
-		WebTable userListTable = responseUserList.getTableWithID("userListTable");
-		
-		TableCell tableCell = userListTable.getTableCellWithID(parameterFirstUserName);
+
+		WebRequest requestUserList = new GetMethodWebRequest(
+				Constant.USER_GET_URL);
+		WebResponse responseUserList = conversation
+				.getResponse(requestUserList);
+		WebTable userListTable = responseUserList
+				.getTableWithID("userListTable");
+
+		TableCell tableCell = userListTable
+				.getTableCellWithID(parameterFirstUserName);
 		String FirstUserName = tableCell.getText();
-		logger.info("FirstUserName"+" = "+ FirstUserName);
-		
-		createUserForm.setParameter("username",
-				parameterSecondUserName);
-		createUserForm.setParameter("firstname",
-				"TestSecondName" );
-		createUserForm.setParameter("lastname",
-				"TestLastName" );
-		createUserForm.setParameter("password",
-				"password" );
-		createUserForm.setParameter("role",
-				"Student" );
+		logger.info("FirstUserName" + " = " + FirstUserName);
+
+		createUserForm.setParameter("username", parameterSecondUserName);
+		createUserForm.setParameter("firstname", "TestSecondName");
+		createUserForm.setParameter("lastname", "TestLastName");
+		createUserForm.setParameter("password", "password");
+		createUserForm.setParameter("role", "Student");
 		createUserForm.submit(createUserSubmitButton);
 		responseUserList = conversation.getResponse(requestUserList);
 		userListTable = responseUserList.getTableWithID("userListTable");
 		tableCell = userListTable.getTableCellWithID(parameterSecondUserName);
 		String SecondUserName = tableCell.getText();
-		logger.info("FirstUserName"+" = "+ SecondUserName);
-		assertEquals(parameterFirstUserName+parameterSecondUserName,FirstUserName+SecondUserName );
-		
+		logger.info("FirstUserName" + " = " + SecondUserName);
+		assertEquals(parameterFirstUserName + parameterSecondUserName,
+				FirstUserName + SecondUserName);
+
 		logger.info("Exited testTC2AddTwoUsers");
 	}
-
 
 }

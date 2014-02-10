@@ -1,0 +1,22 @@
+there is one parent project library
+and two child project library-webapp and library-test
+
+build the parent with
+mvn -Dmaven.test.skip=true install
+
+building parent will build child projects too.you can see the status in console about build.
+
+you can run webapp project on server from eclipse or copy war to tomcat
+
+to build library-test project
+mvn clean -Dmaven.test.skip=true assembly:assembly
+
+
+library-test-1.0-SNAPSHOT-jar-with-dependencies.jar
+in target is jar with tests and all dependencies
+
+use this jar to run test case
+go to folder where this jar is
+and in console run command
+java -cp library-test-1.0-SNAPSHOT-jar-with-dependencies.jar com.library.test.suite.LibraryTestSuite
+make sure server is on while running test case

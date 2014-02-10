@@ -2,23 +2,20 @@ package com.library.test.http;
 
 import junit.framework.TestCase;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+public class TC6 extends TestCase {
 
-public class TC6 extends TestCase{
+	public TC6(String s) {
+		super(s);
+	}
 
-	@Before
 	public void setUp() throws Exception {
 	}
 
-	@After
 	public void tearDown() throws Exception {
 	}
 
-	@Test
 	public void test() {
-		
+
 	}
 
 }

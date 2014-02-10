@@ -4,8 +4,6 @@ import junit.framework.TestCase;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
-import org.junit.After;
-import org.junit.Before;
 
 import com.library.config.Constant;
 import com.library.config.HibernateUtil;
@@ -23,7 +21,7 @@ import com.meterware.httpunit.WebTable;
 
 
 public class TC4  extends TestCase{
-	private static Logger logger = Logger.getLogger(TC3.class);
+	private static Logger logger = Logger.getLogger(TC4.class);
 	public String MyBook1Name = "Mybook1" + System.currentTimeMillis();
 	public String MyBook2Name = "Mybook2" + System.currentTimeMillis();
 	public int isbn1 = (int) System.currentTimeMillis();
@@ -33,7 +31,6 @@ public class TC4  extends TestCase{
 		super(s);
 	}
 
-	@Before
 	public void setUp() throws Exception {
 		logger.info("Entered setUp for TC4 AddTwoTitle");
 		WebConversation conversation = new WebConversation();
@@ -49,7 +46,6 @@ public class TC4  extends TestCase{
 		logger.info("Exited setUp for TC4 AddTwoTitle");
 	}
 
-	@After
 	public void tearDown() throws Exception {
 		logger.info("Entered teadDown of TC4 AddTwoTitle");
 		//delete the book created 
@@ -71,6 +67,7 @@ public class TC4  extends TestCase{
 		logger.info("Exited teadDown of TC4 AddTwoTitle");
 	}
 
+	 
 	public void testTC4AddTwoTitle() throws Exception {
 	logger.info("Entered TC4 AddTwoTitle");
 	WebConversation conversation = new WebConversation();

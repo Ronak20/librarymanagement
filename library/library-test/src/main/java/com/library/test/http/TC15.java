@@ -4,14 +4,11 @@ import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
+import junit.framework.Assert;
 import junit.framework.TestCase;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 import org.xml.sax.SAXException;
 
 import com.library.config.Constant;
@@ -29,9 +26,8 @@ import com.library.service.UserService;
 import com.meterware.httpunit.GetMethodWebRequest;
 import com.meterware.httpunit.WebConversation;
 import com.meterware.httpunit.WebRequest;
-import com.meterware.httpunit.WebResponse;
 
-public class TC15 extends TestCase{
+public class TC15 extends TestCase {
 
 	private static Logger logger = Logger.getLogger(TC15.class);
 
@@ -52,7 +48,10 @@ public class TC15 extends TestCase{
 	private UserDao userDao;
 	private LoanDao loanDao;
 
-	@Before
+	public TC15(String s) {
+		super(s);
+	}
+
 	public void setUp() throws Exception {
 		UUID uuid = UUID.randomUUID();
 
@@ -73,7 +72,7 @@ public class TC15 extends TestCase{
 		this.isbn = "isbn" + uuid;
 		Book book = new Book("bookname" + uuid, isbn, 10);
 		this.bookID = bookDao.saveOrUpdate(book);
-		
+
 		Book book2 = new Book("bookname2" + uuid, "isbn2" + uuid, 20);
 		this.bookID2 = bookDao.saveOrUpdate(book2);
 
@@ -88,7 +87,6 @@ public class TC15 extends TestCase{
 		logger.info("Exited setUp");
 	}
 
-	@After
 	public void tearDown() throws Exception {
 		loanService.deleteLoanByLoanID(loanID);
 		bookService.deleteBook(bookID);
@@ -97,7 +95,6 @@ public class TC15 extends TestCase{
 		session.close();
 	}
 
-	@Test
 	public void testTC15BorrowLoan() throws IOException, SAXException,
 			InterruptedException {
 		logger.info("Entered testTC15BorrowLoan");
@@ -106,12 +103,13 @@ public class TC15 extends TestCase{
 		// logger.info(loanID + "   " + userID);
 		WebRequest requestReturnBook = new GetMethodWebRequest(
 				Constant.getRentBookUrl(bookID2, userID));
-		WebResponse responseReturnBook = conversation
+		conversation
 				.getResponse(requestReturnBook);
 
 		// cannot delete loan until it pays fee
-		List<Loan> loan = this.loanService.getLoanByUserIdBookId(bookID2, userID);
-		Assert.assertSame(loan.size(),0 );
+		List<Loan> loan = this.loanService.getLoanByUserIdBookId(bookID2,
+				userID);
+		Assert.assertSame(loan.size(), 0);
 
 		logger.info("Exited testTC15BorrowLoan");
 	}

@@ -4,14 +4,11 @@ import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
+import junit.framework.Assert;
 import junit.framework.TestCase;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 import org.xml.sax.SAXException;
 
 import com.library.config.Constant;
@@ -27,7 +24,6 @@ import com.library.service.BookService;
 import com.library.service.LoanService;
 import com.library.service.UserService;
 import com.meterware.httpunit.WebConversation;
-import com.meterware.httpunit.WebResponse;
 
 public class TC8 extends TestCase {
 
@@ -52,7 +48,10 @@ public class TC8 extends TestCase {
 
 	private String bookid;
 
-	@Before
+	public TC8(String s) {
+		super(s);
+	}
+
 	public void setUp() throws Exception {
 		logger.info("Entered setUp");
 		UUID uuid = UUID.randomUUID();
@@ -90,7 +89,6 @@ public class TC8 extends TestCase {
 		this.bookid = bookService.saveOrUpdate(book);
 	}
 
-	@After
 	public void tearDown() throws Exception {
 		loanService.delete(this.userid1, this.bookid);
 		loanService.delete(this.userid2, this.bookid);
@@ -102,19 +100,15 @@ public class TC8 extends TestCase {
 		session.close();
 	}
 
-	@Test
 	public void testMultipleUserBorrowingSameCopy() throws IOException,
 			SAXException {
 
 		logger.info("Entered testMultipleUserBorrowingSameCopy");
 
 		WebConversation conversation = new WebConversation();
-		WebResponse response = conversation.getResponse(Constant
-				.getRentBookUrl(bookid, userid1));
-		WebResponse response2 = conversation.getResponse(Constant
-				.getRentBookUrl(bookid, userid2));
-		WebResponse response3 = conversation.getResponse(Constant
-				.getRentBookUrl(bookid, userid3));
+		conversation.getResponse(Constant.getRentBookUrl(bookid, userid1));
+		conversation.getResponse(Constant.getRentBookUrl(bookid, userid2));
+		conversation.getResponse(Constant.getRentBookUrl(bookid, userid3));
 
 		List<Loan> loanList = loanDao.getLoanByUserIdBookId(userid1, bookid);
 		logger.debug(loanList.toString());

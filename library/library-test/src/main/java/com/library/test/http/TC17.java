@@ -6,8 +6,6 @@ import junit.framework.TestCase;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
-import org.junit.After;
-import org.junit.Before;
 
 import com.library.config.Constant;
 import com.library.config.HibernateUtil;
@@ -42,12 +40,11 @@ public class TC17 extends TestCase {
 	private UserService userService;
 	private BookService bookService;
 	private LoanService loanService;
-	
+
 	public TC17(String s) {
 		super(s);
 	}
 
-	@Before
 	public void setUp() throws Exception {
 		HttpUnitOptions.setScriptingEnabled(false);
 		logger.info("Entered setUp for Tc17");
@@ -56,13 +53,12 @@ public class TC17 extends TestCase {
 		userDao = new UserDao(session);
 		bookDao = new BookDao(session);
 		loandao = new LoanDao(session);
-		userService = new UserService(userDao,loandao);
-		bookService = new BookService(bookDao,loandao);
+		userService = new UserService(userDao, loandao);
+		bookService = new BookService(bookDao, loandao);
 		loanService = new LoanService(loandao);
 		logger.info("Exited setUp for TC17");
 	}
 
-	@After
 	public void tearDown() throws Exception {
 		// Delete the loan
 		logger.info("Entered tear down for TC17");
@@ -83,7 +79,7 @@ public class TC17 extends TestCase {
 		logger.debug("Entered TC17 testDeleteUserWithLateFee");
 		User user;
 		String parameterUserName = "MyUser" + System.currentTimeMillis();
-		String IsbnName = "testISBN"+ System.currentTimeMillis();
+		String IsbnName = "testISBN" + System.currentTimeMillis();
 		user = new User("TestFirstName", "TestLastName", parameterUserName,
 				"password", Role.STUDENT);
 		String parameterBookName = "MyBook" + System.currentTimeMillis();
@@ -95,11 +91,10 @@ public class TC17 extends TestCase {
 		// now create loan for this user
 		Calendar now = Calendar.getInstance();
 		now.add(Calendar.MINUTE, 5);
-		logger.info("Book " + book.getBookid() + " user "
-				+ user.getUserId());
-		
-		Loan loan = new Loan(user.getUserId(), book.getBookid(), now.getTime(), 0, 10,
-				false);
+		logger.info("Book " + book.getBookid() + " user " + user.getUserId());
+
+		Loan loan = new Loan(user.getUserId(), book.getBookid(), now.getTime(),
+				0, 10, false);
 		loandao.saveOrUpdate(loan);
 		loanId = loan.getLoanId();
 		bookId = book.getBookid();
@@ -111,7 +106,7 @@ public class TC17 extends TestCase {
 		WebConversation conversation = new WebConversation();
 		WebRequest requestDeleteUser = new GetMethodWebRequest(
 				Constant.DELETE_USER_URL + user.getUserId());
-		Thread.sleep(3*60*1000);
+		Thread.sleep(3 * 60 * 1000);
 		WebResponse responseGetUser = conversation
 				.getResponse(requestDeleteUser);
 		WebTable bookListUpdatedTable = responseGetUser

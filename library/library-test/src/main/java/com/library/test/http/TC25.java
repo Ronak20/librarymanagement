@@ -4,8 +4,6 @@ import junit.framework.TestCase;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
-import org.junit.After;
-import org.junit.Before;
 
 import com.library.config.Constant;
 import com.library.config.HibernateUtil;
@@ -29,13 +27,11 @@ public class TC25 extends TestCase {
 		super(s);
 	}
 
-	@Before
 	public void setUp() throws Exception {
 		logger.info("Entered setUp for TC 25 Delete book with multiple copies");
 		logger.info("Exit setUp for TC 25 Delete book with multiple copies");
 	}
 
-	@After
 	public void tearDown() throws Exception {
 	}
 

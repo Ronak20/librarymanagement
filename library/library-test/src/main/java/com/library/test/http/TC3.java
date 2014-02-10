@@ -19,7 +19,7 @@ import com.meterware.httpunit.WebResponse;
 import com.meterware.httpunit.WebTable;
 
 /**
- * TC3 and TC4
+ * 
  * 
  * @author Ronak
  * 
@@ -35,7 +35,7 @@ public class TC3 extends TestCase {
 
 	public void setUp() throws Exception {
 		logger.info("Entered setUp for testTC3AddTitle");
-		
+
 		logger.info("Exited setUp for testTC3AddTitle");
 
 	}

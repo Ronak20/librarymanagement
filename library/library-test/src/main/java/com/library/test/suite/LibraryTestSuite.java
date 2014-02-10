@@ -1,10 +1,14 @@
 package com.library.test.suite;
 
-import org.junit.runner.JUnitCore;
-import org.junit.runner.Result;
-import org.junit.runner.notification.Failure;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
+import junit.framework.AssertionFailedError;
+import junit.framework.Test;
+import junit.framework.TestListener;
+import junit.framework.TestResult;
 import junit.framework.TestSuite;
+import junit.textui.TestRunner;
 
 import com.library.test.http.TC1;
 import com.library.test.http.TC10;
@@ -26,7 +30,6 @@ import com.library.test.http.TC23;
 import com.library.test.http.TC24;
 import com.library.test.http.TC25;
 import com.library.test.http.TC25a;
-import com.library.test.http.TC25b;
 import com.library.test.http.TC3;
 import com.library.test.http.TC4;
 import com.library.test.http.TC5;
@@ -38,39 +41,76 @@ public class LibraryTestSuite {
 
 	public static void main(String[] args) {
 
-		TestSuite suite = new TestSuite();
-		suite.addTest(new TC1(""));
-		suite.addTest(new TC2());
-		suite.addTest(new TC3(""));
-		suite.addTest(new TC4(""));
-		suite.addTest(new TC5(""));
-		suite.addTest(new TC6());
-		suite.addTest(new TC7());
-		suite.addTest(new TC8());
-		suite.addTest(new TC10(""));
-		suite.addTest(new TC11());
-		suite.addTest(new TC12());
-		suite.addTest(new TC13());
-		suite.addTest(new TC14a());
-		suite.addTest(new TC14c());
-		suite.addTest(new TC15());
-		suite.addTest(new TC16(""));
-		suite.addTest(new TC17(""));
-		suite.addTest(new TC18(""));
-		suite.addTest(new TC19());
-		suite.addTest(new TC20());
-		suite.addTest(new TC21());
-		suite.addTest(new TC22());
-		suite.addTest(new TC23());
-		suite.addTest(new TC24(""));
-		suite.addTest(new TC25(""));
-		suite.addTest(new TC25a(""));
-		suite.addTest(new TC25b(""));
-		JUnitCore junitCore = new JUnitCore();
-		Result result = junitCore.run(suite);
-		for (Failure failure : result.getFailures()) {
-			System.out.println(failure.toString());
-		}
+		TestSuite suite = new TestSuite("Library Management");
+
+		suite.addTest(new TestSuite(TC1.class));
+		suite.addTest(new TestSuite(TC10.class));
+		suite.addTest(new TestSuite(TC11.class));
+		suite.addTest(new TestSuite(TC12.class));
+		suite.addTest(new TestSuite(TC13.class));
+		suite.addTest(new TestSuite(TC14a.class));
+		suite.addTest(new TestSuite(TC14c.class));
+		suite.addTest(new TestSuite(TC15.class));
+		suite.addTest(new TestSuite(TC16.class));
+		suite.addTest(new TestSuite(TC17.class));
+		suite.addTest(new TestSuite(TC18.class));
+		suite.addTest(new TestSuite(TC19.class));
+		suite.addTest(new TestSuite(TC2.class));
+		suite.addTest(new TestSuite(TC20.class));
+		suite.addTest(new TestSuite(TC21.class));
+		suite.addTest(new TestSuite(TC22.class));
+		suite.addTest(new TestSuite(TC23.class));
+		suite.addTest(new TestSuite(TC24.class));
+		suite.addTest(new TestSuite(TC25.class));
+		suite.addTest(new TestSuite(TC25a.class));
+		suite.addTest(new TestSuite(TC3.class));
+		suite.addTest(new TestSuite(TC4.class));
+		suite.addTest(new TestSuite(TC5.class));
+		suite.addTest(new TestSuite(TC6.class));
+		suite.addTest(new TestSuite(TC7.class));
+		suite.addTest(new TestSuite(TC8.class));
+
+		TestResult testResult = TestRunner.run(suite);
+
+		
+	}
+}
+
+class Listener implements TestListener {
+	long startTime = 0;
+	long endTime = 0;
+	long totalTime = 0;
+
+	public void addError(Test arg0, Throwable arg1) {
+		System.out.println("error : " + arg0.getClass().getName() + "  "
+				+ arg1.getMessage());
+		System.out.println(arg1.getStackTrace());
 	}
 
+	public void addFailure(Test arg0, AssertionFailedError arg1) {
+		System.out.println("failed : " + arg0.getClass().getName());
+	}
+
+	public void endTest(Test arg0) {
+		endTime = System.currentTimeMillis();
+		System.out.println("ended : " + arg0.getClass().getName() + " at "
+				+ new Date());
+		totalTime = endTime - startTime;
+		System.out.println(arg0.getClass().getName()
+				+ " totalTime : "
+				+ String.format(
+						"%d min, %d sec",
+						TimeUnit.MILLISECONDS.toMinutes(totalTime),
+						TimeUnit.MILLISECONDS.toSeconds(totalTime)
+								- TimeUnit.MINUTES
+										.toSeconds(TimeUnit.MILLISECONDS
+												.toMinutes(totalTime))));
+
+	}
+
+	public void startTest(Test arg0) {
+		startTime = System.currentTimeMillis();
+		System.out.println("started : " + arg0.getClass().getName() + " at "
+				+ new Date());
+	}
 }

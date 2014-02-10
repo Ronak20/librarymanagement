@@ -3,14 +3,11 @@ package com.library.test.http;
 import java.io.IOException;
 import java.util.UUID;
 
+import junit.framework.Assert;
 import junit.framework.TestCase;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 import org.xml.sax.SAXException;
 
 import com.library.config.Constant;
@@ -28,9 +25,8 @@ import com.library.service.UserService;
 import com.meterware.httpunit.GetMethodWebRequest;
 import com.meterware.httpunit.WebConversation;
 import com.meterware.httpunit.WebRequest;
-import com.meterware.httpunit.WebResponse;
 
-public class TC13 extends TestCase{
+public class TC13 extends TestCase {
 
 	private static Logger logger = Logger.getLogger(TC13.class);
 
@@ -52,7 +48,10 @@ public class TC13 extends TestCase{
 	private LoanDao loanDao;
 	private int oldRenewalCount = 0;
 
-	@Before
+	public TC13(String s) {
+		super(s);
+	}
+
 	public void setUp() throws Exception {
 		UUID uuid = UUID.randomUUID();
 
@@ -85,7 +84,6 @@ public class TC13 extends TestCase{
 		logger.info("Exited setUp");
 	}
 
-	@After
 	public void tearDown() throws Exception {
 		loanService.deleteLoanByLoanID(loanID);
 		bookService.deleteBook(bookID);
@@ -93,7 +91,6 @@ public class TC13 extends TestCase{
 		session.close();
 	}
 
-	@Test
 	public void testTC13RenewExpiredLoan() throws IOException, SAXException,
 			InterruptedException {
 		logger.info("Entered testTC13RenewExpiredLoan");
@@ -101,8 +98,7 @@ public class TC13 extends TestCase{
 		WebConversation conversation = new WebConversation();
 		WebRequest requestRenewBook = new GetMethodWebRequest(
 				Constant.getRenewLoanUrl(loanID, userID));
-		WebResponse responseGetBook = conversation
-				.getResponse(requestRenewBook);
+		conversation.getResponse(requestRenewBook);
 
 		Loan loan = this.loanService.getLoanByID(loanID);
 		session.refresh(loan);
