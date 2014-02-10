@@ -8,7 +8,7 @@
 	</appender>
 	
 	<appender name="file" class="org.apache.log4j.DailyRollingFileAppender">
-		<param name="file" value="logs/LibraryManagement.log" />
+		<param name="file" value="${rootPath}WEB-INF/logs/LibraryManagement.log" />
 		<param name="DatePattern" value="'.'yyyy-MM-dd-HH-mm" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />

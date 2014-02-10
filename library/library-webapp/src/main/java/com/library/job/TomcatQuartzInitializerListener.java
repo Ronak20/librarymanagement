@@ -48,6 +48,7 @@ public class TomcatQuartzInitializerListener implements
 		logger.info(LogConstant.ENTERED + "contextInitialized");
 		
 		ServletContext context = arg0.getServletContext();
+		logger.info("context.getRealPath : "+context.getRealPath("/"));
 		System.setProperty("rootPath", context.getRealPath("/"));
 		
 		JobDetail job = JobBuilder.newJob(LateFeeUpdateJob.class)
