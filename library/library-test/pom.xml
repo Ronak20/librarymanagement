@@ -16,9 +16,20 @@
 		<myTestSourceDirectory>${project.basedir}/src/main/java/com/library/test/http</myTestSourceDirectory>
 	</properties>
 	<build>
+		<resources>
+			<resource>
+				<directory>${basedir}/src/main/java</directory>
+				<includes>
+					<include>**/*.java</include>
+				</includes>
+			</resource>
+		</resources>
 		<testSourceDirectory>${myTestSourceDirectory}</testSourceDirectory>
 		<pluginManagement>
 			<plugins>
+				<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-source-plugin</artifactId> 
+					<executions> <execution> <id>attach-sources</id> <goals> <goal>jar</goal> 
+					</goals> </execution> </executions> </plugin> -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-jar-plugin</artifactId>
@@ -30,6 +41,7 @@
 								<mainClass>com.library.test.suite.LibraryTestSuite</mainClass>
 							</manifest>
 						</archive>
+
 					</configuration>
 				</plugin>
 				<plugin>
