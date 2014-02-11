@@ -106,6 +106,7 @@ public class TC9ThreeUsersBorrowSameItemTest extends TestCase {
 		loanID3 = this.loanDao.getLoanByUserIdBookId(uId3, bookID).get(0)
 				.getLoanId();
 		bookService.decreaseCopies(this.bookID);
+		session.close();
 	}
 
 	public void tearDown() throws Exception {
@@ -164,7 +165,7 @@ public class TC9ThreeUsersBorrowSameItemTest extends TestCase {
 
 
 		loanDao.delete(expectedUid, expectedUid);
-
+		session.close();
 		logger.info("Exited testRentBook");
 
 	}

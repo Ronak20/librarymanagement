@@ -64,6 +64,8 @@ public class RentBookServletTest extends TestCase {
 				userBookListTable.getRowCount() - 1);
 		logger.info("Getting Row Count" + " = "
 				+ userBookListTable.getRowCount());
+		
+		session.close();
 		logger.info("Exited testRentBook");
 
 	}
@@ -108,7 +110,7 @@ public class RentBookServletTest extends TestCase {
 						.getParameter("bookid")));
 
 		loanDao.delete(expectedUid, expectedUid);
-
+		session.close();
 		logger.info("Exited testRentBook");
 
 	}

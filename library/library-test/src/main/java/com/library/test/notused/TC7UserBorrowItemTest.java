@@ -68,7 +68,7 @@ public class TC7UserBorrowItemTest extends TestCase {
 		 */
 
 		requestBookList.setParameter("currentUser", "20");
-
+		session.close();
 		assertEquals("coloumn count", bookDao.getAll().size(),
 				userBookListTable.getRowCount() - 1);
 		logger.info("Getting Row Count" + " = "
@@ -131,7 +131,7 @@ public class TC7UserBorrowItemTest extends TestCase {
 						.getParameter("bookid")));
 
 		loanDao.delete(expectedUid, expectedUid);
-
+		session.close();
 		logger.info("Exited testRentBook");
 
 	}

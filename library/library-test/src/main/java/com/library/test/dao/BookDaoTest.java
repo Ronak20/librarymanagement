@@ -19,6 +19,7 @@ public class BookDaoTest {
 	}
 
 	public void tearDown() throws Exception {
+		session.close();
 	}
 
 	public void test() {

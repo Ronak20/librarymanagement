@@ -37,6 +37,7 @@ public class TC5 extends TestCase {
 		logger.info("trying to delete the book with ISBN: " + isbn + "");
 		Book book = bookDao.getBookByName(bookName);
 		bookDao.deleteBook(book);
+		session.close();
 		logger.info("Exited tearDown of TC5 Add copies of a book");
 
 	}

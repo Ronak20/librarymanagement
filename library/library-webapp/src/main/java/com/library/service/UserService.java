@@ -67,7 +67,7 @@ public class UserService {
 			}
 		}
 		
-		
+		session.close();
 		return true;
 	}
 	
