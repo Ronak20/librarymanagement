@@ -41,8 +41,8 @@ public class TC24 extends TestCase {
 		addBookForm.setParameter("isbn", isbn);
 		addBookForm.submit();
 
-		logger.info("One book added");
-		logger.info("getting retriving book id");
+		logger.debug("One book added");
+		logger.debug("getting retriving book id");
 
 		WebRequest request3 = new GetMethodWebRequest(Constant.BOOK_GET_URL);
 		WebResponse response3 = conversation.getResponse(request3);
@@ -58,7 +58,7 @@ public class TC24 extends TestCase {
 		logger.debug(tableDeleteCell.getText());
 
 		// checking whether book is deleted or not
-		logger.info("checking deleted book");
+		logger.debug("checking deleted book");
 		WebRequest requestGetBook = new GetMethodWebRequest(
 				Constant.BOOK_DELETE_URL + bookidDelete);
 		WebResponse responseGetBook = conversation.getResponse(requestGetBook);

@@ -62,13 +62,13 @@ public class TC17 extends TestCase {
 	public void tearDown() throws Exception {
 		// Delete the loan
 		logger.info("Entered tear down for TC17");
-		logger.info("trying to delete the loanID: " + loanId);
+		logger.debug("trying to delete the loanID: " + loanId);
 		loanService.deleteLoanByLoanID(loanId);
 		// delete the book
-		logger.info("trying to delete the BookID: " + bookId);
+		logger.debug("trying to delete the BookID: " + bookId);
 		bookService.deleteBook(bookId);
 		// delete the user
-		logger.info("trying to delete the UserID: " + userId);
+		logger.debug("trying to delete the UserID: " + userId);
 		userService.delete(userService.getUserbyUserID(userId));
 		// close the session
 		session.close();

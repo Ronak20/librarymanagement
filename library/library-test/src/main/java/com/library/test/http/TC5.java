@@ -55,8 +55,8 @@ public class TC5 extends TestCase {
 		addBookForm.setParameter("isbn", isbn);
 		addBookForm.submit();
 
-		logger.info("One book added");
-		logger.info("getting retriving book id");
+		logger.debug("One book added");
+		logger.debug("getting retriving book id");
 
 		WebRequest request3 = new GetMethodWebRequest(Constant.BOOK_GET_URL);
 		WebResponse response3 = conversation.getResponse(request3);
