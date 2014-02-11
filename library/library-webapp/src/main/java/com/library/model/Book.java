@@ -7,8 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.library.config.ConfigConstant;
+
 @Entity
-@Table(name = "book", catalog = "library")
+@Table(name = "book", catalog = ConfigConstant.CATALOG)
 public class Book {
 
 	private String bookid;

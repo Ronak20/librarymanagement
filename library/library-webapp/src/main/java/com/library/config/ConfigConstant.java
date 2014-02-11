@@ -9,4 +9,6 @@ public class ConfigConstant {
 	public static final int SESSION_PERIOD = 30 * 60;
 
 	public static final String DATE_PATTERN = "yyyy-MM-dd HH:mm:ss";
+
+	public static final String CATALOG = "t5db";
 }

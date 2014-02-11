@@ -9,8 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.library.config.ConfigConstant;
+
 @Entity
-@Table(name = "loan", catalog = "library")
+@Table(name = "loan", catalog = ConfigConstant.CATALOG)
 public class Loan {
 	private String loanId;
 	private String userId;
@@ -26,7 +28,9 @@ public class Loan {
 		super();
 		this.loanId = loanId;
 	}
-	public Loan(){}
+
+	public Loan() {
+	}
 
 	public Loan(String userId, String bookId) {
 		super();
@@ -170,17 +174,21 @@ public class Loan {
 				+ renewalCount + ", lateFee=" + lateFee + ", isLateFeePaid="
 				+ isLateFeePaid + "]";
 	}
+
 	@Column(name = "maxrenewalcount")
 	public int getMaxRenewalCount() {
 		return maxRenewalCount;
 	}
+
 	public void setMaxRenewalCount(int maxRenewalCount) {
 		this.maxRenewalCount = maxRenewalCount;
 	}
+
 	@Column(name = "loantime")
 	public int getLoanTime() {
 		return loanTime;
 	}
+
 	public void setLoanTime(int loanTime) {
 		this.loanTime = loanTime;
 	}
