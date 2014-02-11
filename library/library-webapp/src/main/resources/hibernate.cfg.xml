@@ -5,17 +5,18 @@
 	<session-factory>
 		<property name="hibernate.bytecode.use_reflection_optimizer">false</property>
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="hibernate.connection.username">root</property><!-- t5dba -->
-		<property name="hibernate.connection.password">root</property><!-- t5db@ -->
+		<property name="hibernate.connection.username">t5dba</property><!-- t5dba -->
+		<property name="hibernate.connection.password">t5db@</property><!-- t5db@ -->
 		<property name="hibernate.connection.pool_size">1</property>
-		<!-- jdbc:mysql://134.117.27.247:3306/t5db -->
-		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/library</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/t5db</property>
+		<!-- <property name="hibernate.connection.url">jdbc:mysql://ec2-50-19-213-178.compute-1.amazonaws.com:3306/t5db</property> -->
 		<property name="hibernate.current_session_context_class">thread</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="hibernate.format_sql">false</property>
 		<property name="hibernate.search.autoregister_listeners">false</property>
 		<property name="hibernate.show_sql">false</property>
 		<property name="hibernate.connection.autocommit">true</property>
+		<!-- <property name="hibernate.hbm2ddl.auto">create</property> -->
 
 		<property name="hibernate.c3p0.acquire_increment">1</property>
 		<property name="hibernate.c3p0.idle_test_period">100</property>

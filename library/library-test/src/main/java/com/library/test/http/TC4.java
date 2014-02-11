@@ -33,7 +33,7 @@ public class TC4  extends TestCase{
 
 	public void setUp() throws Exception {
 		logger.info("Entered setUp for TC4 AddTwoTitle");
-		WebConversation conversation = new WebConversation();
+		/*WebConversation conversation = new WebConversation();
 		WebRequest request = new GetMethodWebRequest(Constant.ROOT_URL);
 		HttpUnitOptions.setScriptingEnabled(false);
 		WebResponse response = conversation.getResponse(request);
@@ -42,7 +42,7 @@ public class TC4  extends TestCase{
 		loginForm.setParameter("username", Constant.ADMIN_USERNAME);
 		loginForm.setParameter("password", Constant.ADMIN_PASSWORD);
 		SubmitButton submitButton = loginForm.getSubmitButton("loginSubmit");
-		loginForm.submit(submitButton);
+		loginForm.submit(submitButton);*/
 		logger.info("Exited setUp for TC4 AddTwoTitle");
 	}
 
