@@ -59,7 +59,7 @@ public class RenewBookServlet extends HttpServlet {
 
 		List<Loan> loanList = loanService.getLoanByUserId(userId);
 		request.setAttribute("loanList", loanList);
-
+		session.close();
 		logger.info(LogConstant.REDIRECT + PageConstant.USER_PANEL_SERVLET);
 		this.getServletContext()
 				.getRequestDispatcher(PageConstant.USER_PANEL_SERVLET)

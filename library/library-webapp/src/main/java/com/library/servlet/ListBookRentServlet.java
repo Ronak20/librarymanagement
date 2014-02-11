@@ -46,7 +46,7 @@ public class ListBookRentServlet extends HttpServlet {
 		List<Book> books = bs.getAllBookWithCopies();
 
 		request.setAttribute("bookList", books);
-				
+		session.close();		
 		logger.info("Redirected to " + PageConstant.USER_BOOK_LIST_URL);
 		this.getServletContext()
 				.getRequestDispatcher(PageConstant.USER_BOOK_LIST_URL)

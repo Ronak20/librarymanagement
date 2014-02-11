@@ -63,6 +63,7 @@ public class UnrentBook extends HttpServlet {
 
 		List<Loan> loans = loanService.getLoanByUserId(userId);
 		request.setAttribute("loanList", loans);
+		session.close();
 		this.getServletContext().getRequestDispatcher(PageConstant.USER_PAGE)
 				.include(request, response);
 
